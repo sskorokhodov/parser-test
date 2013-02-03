@@ -25,7 +25,7 @@ public :
 
 	Parser& operator =( const Parser& );
 
-	void parse( Node& root, const std::string& document ) const;
+    void parse( Node& root, const std::string& document ) const;
 };
 
 

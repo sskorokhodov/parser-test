@@ -36,16 +36,16 @@ namespace
 void 
 process( const std::string& inputFileName, const std::string& outputFileName )
 {
-	std::string document = simple::readFile( inputFileName );
+    auto document = simple::readFile( inputFileName );
 
 	rstyle::Parser parser;
-	rstyle::NodesTree tree;
-	parser.parse( tree, document );
+    rstyle::NodesTree tree;
+    parser.parse( tree, document );
 
 	IndexingVisitor indexator;
 	tree.visit( indexator );
 
 	rstyle::StructureWriter writer;
-	std::string out = writer.write( tree );
+    auto out = writer.write( tree );
 	simple::writeFile( out, outputFileName );
 }
