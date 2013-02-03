@@ -1,4 +1,4 @@
-﻿// NodesTree.h
+// NodesTree.h
 
 #ifndef RSTYLE_PARSER_NODES_TREE_H
 #define RSTYLE_PARSER_NODES_TREE_H
@@ -36,8 +36,8 @@ private :
 	NodesTree& operator =( const NodesTree& );
 
 private :
-    size_t id_;
-    Node* firstNode_;
+	size_t id_;
+	Node* firstNode_;
 };
 
 

@@ -1,4 +1,4 @@
-﻿// UniversalNode.h
+// UniversalNode.h
 
 #ifndef RSTYLE_PARSER_UNIVERSAL_NODE_H
 #define RSTYLE_PARSER_UNIVERSAL_NODE_H
@@ -41,10 +41,10 @@ private :
 	typedef NodesVector::const_iterator NodesConstIterator;
 
 	NodesVector subnodes_;
-    size_t id_;
+	size_t id_;
 	std::string name_;
-    Node* parent_;
-    std::string value_;
+	Node* parent_;
+	std::string value_;
 };
 
 

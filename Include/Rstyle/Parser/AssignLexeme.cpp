@@ -1,4 +1,4 @@
-﻿// AssignLexeme.cpp
+// AssignLexeme.cpp
 
 #include <Rstyle/Parser/AssignLexeme.h>
 
@@ -29,13 +29,13 @@ AssignLexeme::AssignLexeme( const StringConstIterator& iStart, const std::string
 
 
 
-AssignLexeme::~AssignLexeme() 
+AssignLexeme::~AssignLexeme()
 {
 }
 
 
 
-Lexeme* 
+Lexeme*
 AssignLexeme::parseNext( const std::string& document )
 {
 	StringConstIterator iLexemeBegin = skipSpaces( end_, document );
@@ -43,7 +43,7 @@ AssignLexeme::parseNext( const std::string& document )
 	{
 		if ( *iLexemeBegin == '"' )
 		{
-			return new ValueLexeme( iLexemeBegin, document ); 
+			return new ValueLexeme( iLexemeBegin, document );
 		}
 		else if ( *iLexemeBegin == '{' )
 		{
@@ -55,7 +55,7 @@ AssignLexeme::parseNext( const std::string& document )
 
 
 
-Node* 
+Node*
 AssignLexeme::applyTo( Node* node ) const
 {
 	return node;
@@ -71,7 +71,7 @@ AssignLexeme::getType() const
 
 
 
-void 
+void
 AssignLexeme::changeExpectedMatches( int& ) const
 {
 }

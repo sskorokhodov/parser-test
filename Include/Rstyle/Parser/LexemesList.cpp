@@ -26,7 +26,7 @@ LexemesList::read( const std::string& document )
 	LexemesPairsMatchChecker matchChecker;
 
 	for ( 
-        Lexeme* lexeme = new NameLexeme( document.begin(), document );
+		Lexeme* lexeme = new NameLexeme( document.begin(), document );
 		lexeme != 0; 
 		lexeme = lexeme->parseNext( document )
 	)
@@ -41,7 +41,7 @@ LexemesList::read( const std::string& document )
 
 LexemesList::~LexemesList()
 {
-    for ( auto lexeme : lexemes_ )
+	for ( auto lexeme : lexemes_ )
 	{
 		delete lexeme;
 	}
@@ -53,9 +53,9 @@ void
 LexemesList::fillNode( Node& node )
 {
 	Node* nextNode = &node;
-    for ( auto lexeme : lexemes_ )
+	for ( auto lexeme : lexemes_ )
 	{
-        nextNode = lexeme->applyTo( nextNode );
+		nextNode = lexeme->applyTo( nextNode );
 	}
 }
 

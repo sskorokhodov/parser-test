@@ -1,4 +1,4 @@
-﻿// Exceptions.h
+// Exceptions.h
 
 #ifndef RSTYLE_PARSER_EXCEPTIONS_H
 #define RSTYLE_PARSER_EXCEPTIONS_H
@@ -20,7 +20,7 @@ public :
 	{
 	}
 
-    virtual ~ParseException() throw() {}
+	virtual ~ParseException() throw() {}
 };
 
 
@@ -33,7 +33,7 @@ public :
 	{
 	}
 
-    virtual ~LexicalException() throw() {}
+	virtual ~LexicalException() throw() {}
 };
 
 
@@ -46,7 +46,7 @@ public :
 	{
 	}
 
-    virtual ~SyntaxException() throw() {}
+	virtual ~SyntaxException() throw() {}
 };
 
 

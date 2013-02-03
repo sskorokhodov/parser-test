@@ -17,7 +17,8 @@ void printHelp();
 
 int main( int argc, char* argv[] )
 {
-	try {
+	try
+	{
 		simple::CommandLineOptions options( "-" );
 		options.addKey( "i" );
 		options.addKey( "o" );
@@ -25,31 +26,35 @@ int main( int argc, char* argv[] )
 
 		if ( options.has( "i" ) )
 		{
-            std::string inputFileName = options.get( "i" );
-            std::string outputFileName = options.get( "o", "out.txt" );
+			std::string inputFileName = options.get( "i" );
+			std::string outputFileName = options.get( "o", "out.txt" );
 			::process( inputFileName, outputFileName );
 		}
 		else
 		{
-            ::printHelp();
+			::printHelp();
 		}
 	}
-	catch ( const simple::CommandLineOptions::ParseException& e ) {
+	catch ( const simple::CommandLineOptions::ParseException& e )
+	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << simple::convertAnsiToOem( "Неверные аргументы командной строки" ) << std::endl;
 		printHelp();
 		return 4;
 	}
-	catch ( const rstyle::ParseException& e ) {
+	catch ( const rstyle::ParseException& e )
+	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << simple::convertAnsiToOem( "Неверный формат данных" ) << std::endl;
 		return 3;
 	}
-	catch ( const std::exception& e ) {
+	catch ( const std::exception& e )
+	{
 		std::cerr << e.what() << std::endl;
 		return 2;
 	}
-	catch ( ... ) {
+	catch ( ... )
+	{
 		std::cerr << "Unexpected error" << std::endl;
 		return 1;
 	}

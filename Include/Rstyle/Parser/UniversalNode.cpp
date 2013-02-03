@@ -1,4 +1,4 @@
-﻿// UniversalNode.cpp
+// UniversalNode.cpp
 
 #include <Rstyle/Parser/UniversalNode.h>
 #include <stdexcept>
@@ -20,12 +20,13 @@ UniversalNode::UniversalNode( const std::string name, Node* parent ) :
 
 UniversalNode::~UniversalNode() 
 {
-	for ( NodesIterator iNode = subnodes_.begin(); iNode != subnodes_.end(); ++iNode )
+	for ( auto node : subnodes_ )
 	{
-		Node* node = (*iNode);
 		delete node;
 	}
 }
+
+
 
 size_t 
 UniversalNode::getId() const

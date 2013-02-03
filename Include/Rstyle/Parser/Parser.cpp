@@ -41,7 +41,7 @@ Parser::parse( Node& root, const std::string& document ) const
 {
 	LexemesList lexemes;
 	lexemes.read( document );
-    lexemes.fillNode( root );
+	lexemes.fillNode( root );
 }
 
 
