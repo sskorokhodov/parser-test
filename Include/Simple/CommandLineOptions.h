@@ -1,4 +1,4 @@
-﻿// CommandLineOptions.h
+// CommandLineOptions.h
 
 #ifndef SIMPLE_COMMAND_LINE_OPTIONS_H
 #define SIMPLE_COMMAND_LINE_OPTIONS_H
@@ -24,15 +24,15 @@ public :
 	explicit CommandLineOptions( const std::string& nameSign );
 	CommandLineOptions( const CommandLineOptions& );
 	virtual ~CommandLineOptions();
-	
-	bool isEmpty() const;
-	bool has( const std::string& key ) const;
+
 	std::string get( const std::string& key ) const;
 	std::string get( const std::string& key, const std::string& defaultValue ) const;
 	std::string getExecutableName() const;
+	bool has( const std::string& key ) const;
+	bool isEmpty() const;
 
-	void addKey( const std::string& key );
 	void parse( int argc, char* argv[] );
+	void addKey( const std::string& key );
 
 private :
 	CommandLineOptions& operator =( const CommandLineOptions& );
@@ -57,11 +57,11 @@ class CommandLineOptions::ParseException : public std::logic_error
 {
 public :
 	explicit ParseException( const std::string& message ) :
-        logic_error( message.c_str() )
+		logic_error( message.c_str() )
 	{
 	}
 
-    virtual ~ParseException() throw() {}
+	virtual ~ParseException() throw() {}
 };
 
 

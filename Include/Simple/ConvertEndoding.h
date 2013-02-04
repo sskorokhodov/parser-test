@@ -12,7 +12,7 @@ namespace simple
 
 
 std::string convertAnsiToOem( const std::string& ansi );
-
+std::string convertUtf8ToOem( const std::string& utf8 );
 
 } // simple
 
