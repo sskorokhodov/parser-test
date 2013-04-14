@@ -4,6 +4,7 @@
 #define RSTYLE_PARSER_LEXEME_H
 
 #include <Rstyle/Parser/Node.h>
+#include <memory>
 
 
 
@@ -11,16 +12,12 @@ namespace rstyle
 {
 
 
-class LexemeType
+enum class LexemeType
 {
-public :
-	enum Type
-	{
-		NAME,
-		LIST,
-		ASSIGN,
-		VALUE
-	};
+	NAME,
+	LIST,
+	ASSIGN,
+	VALUE
 };
 
 
@@ -28,13 +25,17 @@ public :
 class Lexeme
 {
 public :
-	virtual ~Lexeme() {}
+	typedef std::shared_ptr< Lexeme > SharedPointer;
 
-	virtual Node* applyTo( Node* node ) const = 0;
-	virtual LexemeType::Type getType() const = 0;
+public :
+	virtual ~Lexeme() = default;
+
+	virtual SharedPointer parseNext( const std::string& document ) const = 0;
+	virtual Node& applyTo( Node& node ) const = 0;
+	virtual LexemeType getType() const = 0;
 	virtual void changeExpectedMatches( int& count ) const = 0;
 
-	virtual Lexeme* parseNext( const std::string& document ) = 0;
+	static const SharedPointer null;
 };
 
 

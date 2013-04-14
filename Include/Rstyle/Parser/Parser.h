@@ -16,16 +16,12 @@ namespace rstyle
 class Parser
 {
 public :
-	typedef std::string::const_iterator StringConstIterator;
+	Parser() = default;
+	Parser( const Parser& ) = default;
+	Parser& operator =( const Parser& ) = default;
+	virtual ~Parser() = default;
 
-public :
-	Parser();
-	Parser( const Parser& );
-	virtual ~Parser();
-
-	Parser& operator =( const Parser& );
-
-	void parse( Node& root, const std::string& document ) const;
+	virtual Node::SharedPointer parse( const std::string& document ) const;
 };
 
 

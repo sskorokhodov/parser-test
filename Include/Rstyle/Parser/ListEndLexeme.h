@@ -16,17 +16,14 @@ class ListEndLexeme : public Lexeme
 {
 public :
 	ListEndLexeme( const StringConstIterator& iStart, const std::string& document );
-	virtual ~ListEndLexeme();
+	ListEndLexeme( const ListEndLexeme& ) = delete;
+	ListEndLexeme& operator =( const ListEndLexeme& ) = delete;
+	virtual ~ListEndLexeme() noexcept = default;
 
-	virtual Node* applyTo( Node* node ) const;
-	virtual LexemeType::Type getType() const;
-	virtual void changeExpectedMatches( int& count ) const;
-
-	virtual Lexeme* parseNext( const std::string& document );
-
-private :
-	ListEndLexeme( const ListEndLexeme& );
-	ListEndLexeme& operator =( const ListEndLexeme& );
+	virtual Node& applyTo( Node& node ) const override;
+	virtual LexemeType getType() const override;
+	virtual void changeExpectedMatches( int& count ) const override;
+	virtual SharedPointer parseNext( const std::string& document ) const override;
 
 private :
 	StringConstIterator begin_;

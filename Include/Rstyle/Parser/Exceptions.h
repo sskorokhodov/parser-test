@@ -16,11 +16,11 @@ class ParseException : public std::logic_error
 {
 public :
 	explicit ParseException( const std::string& message ) :
-		logic_error( message.c_str() )
+		logic_error{ message }
 	{
 	}
 
-	virtual ~ParseException() throw() {}
+	virtual ~ParseException() noexcept = default;
 };
 
 
@@ -29,11 +29,11 @@ class LexicalException : public ParseException
 {
 public :
 	explicit LexicalException( const std::string& message ) :
-		ParseException( message )
+		ParseException{ message }
 	{
 	}
 
-	virtual ~LexicalException() throw() {}
+	virtual ~LexicalException() noexcept = default;
 };
 
 
@@ -42,11 +42,11 @@ class SyntaxException : public ParseException
 {
 public :
 	explicit SyntaxException( const std::string& message ) :
-		ParseException( message )
+		ParseException{ message }
 	{
 	}
 
-	virtual ~SyntaxException() throw() {}
+	virtual ~SyntaxException() noexcept = default;
 };
 
 

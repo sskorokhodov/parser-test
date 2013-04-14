@@ -12,11 +12,11 @@
 namespace rstyle
 {
 
-	
+
 class Writer
 {
 public :
-	virtual ~Writer() {}
+	virtual ~Writer() = default;
 
 	virtual std::string write( const Node& root ) const = 0;
 };

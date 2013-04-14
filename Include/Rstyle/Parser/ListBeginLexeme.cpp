@@ -12,62 +12,56 @@ namespace rstyle
 {
 
 
-ListBeginLexeme::ListBeginLexeme( 
-	const StringConstIterator& iStart, const std::string& document 
-) :
-	begin_( iStart ),
-	end_( document.end() )
+ListBeginLexeme::ListBeginLexeme(
+	const StringConstIterator& iStart, const std::string& document
+)
+	: begin_{ iStart }
+	, end_{ document.end() }
 {
 	begin_ = skipSpaces( iStart, document );
 	if ( begin_ != document.end() )
 	{
 		if ( *begin_ != '{' )
 		{
-			throw SyntaxException( "List begin lexeme '{' expected" );
+			throw SyntaxException{ "List begin lexeme '{' expected" };
 		}
 		end_ = begin_ + 1;
 	}
 }
-	
-
-
-ListBeginLexeme::~ListBeginLexeme() 
-{
-}
 
 
 
-Node* 
-ListBeginLexeme::applyTo( Node* node ) const
+Node&
+ListBeginLexeme::applyTo( Node& node ) const
 {
 	return node;
 }
 
 
 
-Lexeme* 
-ListBeginLexeme::parseNext( const std::string& document )
+Lexeme::SharedPointer
+ListBeginLexeme::parseNext( const std::string& document ) const
 {
-	static const LexemePattern alphaPattern( 'A', 'z' );
+	static const LexemePattern alphaPattern{ 'A', 'z' };
 
 	StringConstIterator iLexemeBegin = skipSpaces( end_, document );
 	if ( iLexemeBegin != document.end() )
 	{
 		if ( alphaPattern.isMatch( *iLexemeBegin ) )
 		{
-			return new NameLexeme( iLexemeBegin, document );
+			return std::make_shared< NameLexeme >( iLexemeBegin, document );
 		}
 		else if ( *iLexemeBegin == '}' )
 		{
-			return new ListEndLexeme( iLexemeBegin, document );
+			return std::make_shared< ListEndLexeme >( iLexemeBegin, document );
 		}
 	}
-	throw SyntaxException( "Name or list end expected after '{' lexeme" );
+	throw SyntaxException{ "Name or list end expected after '{' lexeme" };
 }
 
 
 
-LexemeType::Type
+LexemeType
 ListBeginLexeme::getType() const
 {
 	return LexemeType::LIST;
@@ -75,7 +69,7 @@ ListBeginLexeme::getType() const
 
 
 
-void 
+void
 ListBeginLexeme::changeExpectedMatches( int& count ) const
 {
 	++count;

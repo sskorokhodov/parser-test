@@ -13,17 +13,16 @@ namespace rstyle
 class LexemesPairsMatchChecker
 {
 public :
-	LexemesPairsMatchChecker();
+	LexemesPairsMatchChecker() = default;
 	LexemesPairsMatchChecker( const LexemesPairsMatchChecker& checker );
-	virtual ~LexemesPairsMatchChecker();
-
 	LexemesPairsMatchChecker& operator =( const LexemesPairsMatchChecker& checker );
+	virtual ~LexemesPairsMatchChecker() = default;
 
 	void checkFinal() const;
 	void check( const Lexeme& lexeme );
 
 private :
-	typedef std::map< LexemeType::Type, int > MatchesMap;
+	typedef std::map< LexemeType, int > MatchesMap;
 	typedef MatchesMap::const_iterator MatchesConstIterator;
 	MatchesMap matches_;
 };

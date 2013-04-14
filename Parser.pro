@@ -25,7 +25,9 @@ SOURCES += \
     Include/Rstyle/Parser/AssignLexeme.cpp \
     Include/Simple/FileReadWrite.cpp \
     Include/Simple/ConvertEncoding.cpp \
-		Include/Simple/CommandLineOptions.cpp
+		Include/Simple/CommandLineOptions.cpp \
+    Include/Rstyle/Parser/Lexeme.cpp \
+    Include/Rstyle/Parser/Node.cpp
 
 HEADERS += \
     Source/Process.h \

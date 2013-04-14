@@ -1,4 +1,4 @@
-﻿// NodesTree.h
+// NodesTree.h
 
 #include <Rstyle/Parser/NodesTree.h>
 #include <Rstyle/Parser/UniversalNode.h>
@@ -16,12 +16,12 @@ namespace
 	class CountNodesVisitor : public rstyle::Node::Visitor
 	{
 	public :
-		CountNodesVisitor() :
-			count_( 0 )
+		CountNodesVisitor()
+			: count_{ 0 }
 		{
 		}
 
-		virtual void accept( rstyle::Node& )
+		virtual void accept( rstyle::Node& ) override
 		{
 			++count_;
 		}
@@ -38,32 +38,15 @@ namespace
 
 
 
-NodesTree::NodesTree() :
-	id_( 0 ),
-	firstNode_( 0 )
+NodesTree::NodesTree()
+	: id_{ 0 }
+	, firstNode_{ 0 }
 {
 }
 
 
 
-NodesTree::~NodesTree() 
-{
-	delete firstNode_;
-}
-
-
-
-size_t 
-NodesTree::count() const
-{
-	CountNodesVisitor counter;
-	firstNode_->visit( counter );
-	return counter.getCount();
-}
-
-
-
-size_t 
+size_t
 NodesTree::getId() const
 {
 	return id_;
@@ -71,15 +54,15 @@ NodesTree::getId() const
 
 
 
-std::string 
+std::string
 NodesTree::getName() const
 {
-	throw std::logic_error( "Nodes tree has no name" );
+	throw std::logic_error{ "Nodes tree has no name" };
 }
 
 
 
-bool 
+bool
 NodesTree::isComposite() const
 {
 	return true;
@@ -87,23 +70,23 @@ NodesTree::isComposite() const
 
 
 
-std::string 
+std::string
 NodesTree::getValue() const
 {
-	throw std::logic_error( "Nodes tree has no value" );
+	throw std::logic_error{ "Nodes tree has no value" };
 }
 
 
 
-void 
+void
 NodesTree::setValue( const std::string& )
 {
-	throw std::logic_error( "Could not add value to nodes tree" );
+	throw std::logic_error{ "Could not add value to nodes tree" };
 }
 
 
 
-void 
+void
 NodesTree::setId( size_t id )
 {
 	id_ = id;
@@ -111,25 +94,24 @@ NodesTree::setId( size_t id )
 
 
 
-Node* 
+Node::SharedPointer
 NodesTree::addNode( const std::string& name )
 {
-	delete firstNode_;
-	firstNode_ = new UniversalNode( name, this );
+	firstNode_ = std::make_shared< UniversalNode >( name, this );
 	return firstNode_;
 }
 
 
 
-Node* 
+Node&
 NodesTree::getParent() const
 {
-	throw std::logic_error( "Nodes tree has no parent" );
+	throw std::logic_error{ "Nodes tree has no parent" };
 }
 
 
 
-void 
+void
 NodesTree::visit( Visitor& visitor )
 {
 	firstNode_->visit( visitor );
@@ -137,10 +119,20 @@ NodesTree::visit( Visitor& visitor )
 
 
 
-void 
+void
 NodesTree::visit( ConstVisitor& visitor ) const
 {
 	firstNode_->visit( visitor );
+}
+
+
+
+size_t
+NodesTree::countSubnodes() const
+{
+	CountNodesVisitor counter;
+	firstNode_->visit( counter );
+	return counter.getCount();
 }
 
 

@@ -24,12 +24,10 @@ public :
 	explicit LexemePattern( char symbol );
 	LexemePattern( char first, char last );
 	LexemePattern( const LexemePattern& pattern );
-	virtual ~LexemePattern();
+	LexemePattern& operator =( const LexemePattern& pattern ) = delete;
+	virtual ~LexemePattern() = default;
 
 	bool isMatch( char symbol ) const;
-
-private :
-	LexemePattern& operator =( const LexemePattern& pattern );
 
 private :
 	const char first_;

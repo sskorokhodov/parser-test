@@ -13,18 +13,16 @@
 
 namespace
 {
-	class ExecutionResultCode
+	enum class ExecutionResultCode
 	{
-	public :
-		enum Type
-		{
-			SUCCESS = 0,
-			UNRECOGNIZED,
-			UNEXPECTED,
-			PARSING,
-			COMMAND_LINE_ARGUMENTS
-		};
+		SUCCESS = 0,
+		UNRECOGNIZED,
+		UNEXPECTED,
+		PARSING,
+		COMMAND_LINE_ARGUMENTS
 	};
+
+
 
 	void printHelp()
 	{
@@ -50,7 +48,7 @@ namespace
 
 	simple::CommandLineOptions getCommandLineOptions( int argc, char* argv[] )
 	{
-		simple::CommandLineOptions options( "-" );
+		simple::CommandLineOptions options{ "-" };
 		options.addKey( "i" );
 		options.addKey( "o" );
 		options.parse( argc, argv );
@@ -75,23 +73,23 @@ int main( int argc, char* argv[] )
 		std::cerr << e.what() << std::endl;
 		std::cerr << simple::convertUtf8ToOem( "Неверные аргументы командной строки" ) << std::endl;
 		::printHelp();
-		return ExecutionResultCode::COMMAND_LINE_ARGUMENTS;
+		return static_cast< int >( ExecutionResultCode::COMMAND_LINE_ARGUMENTS );
 	}
 	catch ( const rstyle::ParseException& e )
 	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << simple::convertUtf8ToOem( "Неверный формат данных" ) << std::endl;
-		return ExecutionResultCode::PARSING;
+		return static_cast< int >( ExecutionResultCode::PARSING );
 	}
 	catch ( const std::exception& e )
 	{
 		std::cerr << e.what() << std::endl;
-		return ExecutionResultCode::UNEXPECTED;
+		return static_cast< int >( ExecutionResultCode::UNEXPECTED );
 	}
 	catch ( ... )
 	{
 		std::cerr << "Unrecognized error" << std::endl;
-		return ExecutionResultCode::UNRECOGNIZED;
+		return static_cast< int >( ExecutionResultCode::UNRECOGNIZED );
 	}
-	return ExecutionResultCode::SUCCESS;
+	return static_cast< int >( ExecutionResultCode::SUCCESS );
 }

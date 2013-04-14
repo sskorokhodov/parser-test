@@ -12,16 +12,16 @@ namespace rstyle
 {
 
 
-AssignLexeme::AssignLexeme( const StringConstIterator& iStart, const std::string& document ) :
-	begin_( iStart ),
-	end_( document.end() )
+AssignLexeme::AssignLexeme( const StringConstIterator& iStart, const std::string& document )
+	: begin_{ iStart }
+	, end_{ document.end() }
 {
 	begin_ = skipSpaces( iStart, document );
 	if ( begin_ != document.end() )
 	{
 		if ( *begin_ != '=' )
 		{
-			throw SyntaxException( "Assing lexeme '=' expected" );
+			throw SyntaxException{ "Assing lexeme '=' expected" };
 		}
 		end_ = begin_ + 1;
 	}
@@ -29,41 +29,35 @@ AssignLexeme::AssignLexeme( const StringConstIterator& iStart, const std::string
 
 
 
-AssignLexeme::~AssignLexeme()
-{
-}
-
-
-
-Lexeme*
-AssignLexeme::parseNext( const std::string& document )
+Lexeme::SharedPointer
+AssignLexeme::parseNext( const std::string& document ) const
 {
 	StringConstIterator iLexemeBegin = skipSpaces( end_, document );
 	if ( iLexemeBegin != document.end() )
 	{
 		if ( *iLexemeBegin == '"' )
 		{
-			return new ValueLexeme( iLexemeBegin, document );
+			return std::make_shared< ValueLexeme >( iLexemeBegin, document );
 		}
 		else if ( *iLexemeBegin == '{' )
 		{
-			return new ListBeginLexeme( iLexemeBegin, document );
+			return std::make_shared< ListBeginLexeme >( iLexemeBegin, document );
 		}
 	}
-	throw SyntaxException( "Value or list begining expected after '=' lexeme" );
+	throw SyntaxException{ "Value or list begining expected after '=' lexeme" };
 }
 
 
 
-Node*
-AssignLexeme::applyTo( Node* node ) const
+Node&
+AssignLexeme::applyTo( Node& node ) const
 {
 	return node;
 }
 
 
 
-LexemeType::Type
+LexemeType
 AssignLexeme::getType() const
 {
 	return LexemeType::ASSIGN;

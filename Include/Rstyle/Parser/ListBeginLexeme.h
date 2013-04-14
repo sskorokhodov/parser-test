@@ -16,17 +16,15 @@ class ListBeginLexeme : public Lexeme
 {
 public :
 	ListBeginLexeme( const StringConstIterator& iStart, const std::string& document );
-	virtual ~ListBeginLexeme();
+	ListBeginLexeme( const ListBeginLexeme& ) = delete;
+	ListBeginLexeme& operator =( const ListBeginLexeme& ) = delete;
+	virtual ~ListBeginLexeme() noexcept = default;
 
-	virtual Node* applyTo( Node* node ) const;
-	virtual LexemeType::Type getType() const;
-	virtual void changeExpectedMatches( int& count ) const;
+	virtual Node& applyTo( Node& node ) const override;
+	virtual LexemeType getType() const override;
+	virtual void changeExpectedMatches( int& count ) const override;
 
-	virtual Lexeme* parseNext( const std::string& document );
-
-private :
-	ListBeginLexeme( const ListBeginLexeme& );
-	ListBeginLexeme& operator =( const ListBeginLexeme& );
+	virtual Lexeme::SharedPointer parseNext( const std::string& document ) const override;
 
 private :
 	StringConstIterator begin_;

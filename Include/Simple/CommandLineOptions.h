@@ -22,8 +22,10 @@ public :
 
 public :
 	explicit CommandLineOptions( const std::string& nameSign );
-	CommandLineOptions( const CommandLineOptions& );
-	virtual ~CommandLineOptions();
+	CommandLineOptions(const CommandLineOptions& );
+	CommandLineOptions( const CommandLineOptions&& ) noexcept;
+	CommandLineOptions& operator =( const CommandLineOptions& ) = delete;
+	virtual ~CommandLineOptions() = default;
 
 	std::string get( const std::string& key ) const;
 	std::string get( const std::string& key, const std::string& defaultValue ) const;
@@ -33,9 +35,6 @@ public :
 
 	void parse( int argc, char* argv[] );
 	void addKey( const std::string& key );
-
-private :
-	CommandLineOptions& operator =( const CommandLineOptions& );
 
 	bool isKey( const std::string& token ) const;
 	void checkIfKeyAllowed( const std::string& key ) const;
@@ -57,11 +56,11 @@ class CommandLineOptions::ParseException : public std::logic_error
 {
 public :
 	explicit ParseException( const std::string& message ) :
-		logic_error( message.c_str() )
+		logic_error( message )
 	{
 	}
 
-	virtual ~ParseException() throw() {}
+	virtual ~ParseException() noexcept = default;
 };
 
 

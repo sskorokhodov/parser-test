@@ -2,61 +2,56 @@
 
 #include <Rstyle/Parser/LexemesList.h>
 
-#include <Rstyle/Parser/NameLexeme.h>
 #include <Rstyle/Parser/LexemesPairsMatchChecker.h>
-
+#include <Rstyle/Parser/NameLexeme.h>
+#include <Rstyle/Parser/NodesTree.h>
 
 
 namespace rstyle
 {
 
 
-LexemesList::LexemesList()
+LexemesList::LexemesList( const std::string& document )
+	: lexemes_{ read( document ) }
 {
 }
 
 
 
-void
+LexemesList::LexemesVector
 LexemesList::read( const std::string& document )
 {
+	LexemesVector lexemes;
 	static const size_t nSymbolsPerLexemeExpected = 3;
 	size_t nLexemesToReserve = document.size() / nSymbolsPerLexemeExpected;
-	lexemes_.reserve( nLexemesToReserve );
+	lexemes.reserve( nLexemesToReserve );
 	LexemesPairsMatchChecker matchChecker;
 
-	for ( 
-		Lexeme* lexeme = new NameLexeme( document.begin(), document );
-		lexeme != 0; 
+	for (
+		Lexeme::SharedPointer lexeme = std::make_shared< NameLexeme >( document.begin(), document );
+		lexeme != Lexeme::null;
 		lexeme = lexeme->parseNext( document )
 	)
 	{
-		lexemes_.push_back( lexeme );
+		lexemes.push_back( lexeme );
 		matchChecker.check( *lexeme );
 	}
 	matchChecker.checkFinal();
+	return lexemes;
 }
 
 
 
-LexemesList::~LexemesList()
+Node::SharedPointer
+LexemesList::fillTree() const
 {
-	for ( auto lexeme : lexemes_ )
+	auto root = std::make_shared< NodesTree >();
+	Node* nextNode = root.get();
+	for ( const auto& lexeme : lexemes_ )
 	{
-		delete lexeme;
+		nextNode = &(lexeme->applyTo( *nextNode ));
 	}
-}
-
-
-
-void 
-LexemesList::fillNode( Node& node )
-{
-	Node* nextNode = &node;
-	for ( auto lexeme : lexemes_ )
-	{
-		nextNode = lexeme->applyTo( nextNode );
-	}
+	return root;
 }
 
 

@@ -10,12 +10,12 @@ namespace rstyle
 {
 
 
-NameLexeme::NameLexeme( const StringConstIterator& iStart, const std::string& document ) :
-	begin_( iStart ),
-	end_( document.end() )
+NameLexeme::NameLexeme( const StringConstIterator& iStart, const std::string& document )
+	: begin_{ iStart }
+	, end_{ document.end() }
 {
-	static const LexemePattern alphaPattern( 'A', 'z' );
-	static const LexemePattern numericPattern( '0', '9' );
+	static const LexemePattern alphaPattern{ 'A', 'z' };
+	static const LexemePattern numericPattern{ '0', '9' };
 
 	begin_ = skipSpaces( iStart, document );
 	if ( begin_ != document.end() )
@@ -35,30 +35,24 @@ NameLexeme::NameLexeme( const StringConstIterator& iStart, const std::string& do
 
 
 
-NameLexeme::~NameLexeme() 
+Node&
+NameLexeme::applyTo( Node& node ) const
 {
+	auto subnode = node.addNode( std::string( begin_, end_ ) );
+	return *subnode;
 }
 
 
 
-Node* 
-NameLexeme::applyTo( Node* node ) const
+Lexeme::SharedPointer
+NameLexeme::parseNext( const std::string& document ) const
 {
-	Node* subnode = node->addNode( std::string( begin_, end_ ) );
-	return subnode;
+	return std::make_shared< AssignLexeme >( end_, document );
 }
 
 
 
-Lexeme* 
-NameLexeme::parseNext( const std::string& document )
-{
-	return new AssignLexeme( end_, document );
-}
-
-
-
-LexemeType::Type
+LexemeType
 NameLexeme::getType() const
 {
 	return LexemeType::NAME;
@@ -66,7 +60,7 @@ NameLexeme::getType() const
 
 
 
-void 
+void
 NameLexeme::changeExpectedMatches( int& ) const
 {
 }

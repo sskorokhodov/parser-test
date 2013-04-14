@@ -16,18 +16,15 @@ class NameLexeme : public Lexeme
 {
 public :
 	NameLexeme( const StringConstIterator& iStart, const std::string& document );
-	virtual ~NameLexeme();
+	NameLexeme( const NameLexeme& ) = delete;
+	NameLexeme& operator =( const NameLexeme& ) = delete;
+	virtual ~NameLexeme() noexcept = default;
 
-	virtual Node* applyTo( Node* node ) const;
-	virtual LexemeType::Type getType() const;
-	virtual void changeExpectedMatches( int& count ) const;
+	virtual Node& applyTo( Node& node ) const override;
+	virtual LexemeType getType() const override;
+	virtual void changeExpectedMatches( int& count ) const override;
+	virtual SharedPointer parseNext( const std::string& document ) const override;
 
-	virtual Lexeme* parseNext( const std::string& document );
-
-private :
-	NameLexeme( const NameLexeme& );
-	NameLexeme& operator =( const NameLexeme& );
-	
 private :
 	StringConstIterator begin_;
 	StringConstIterator end_;

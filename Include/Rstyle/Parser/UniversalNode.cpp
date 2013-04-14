@@ -9,26 +9,16 @@ namespace rstyle
 {
 
 
-UniversalNode::UniversalNode( const std::string name, Node* parent ) :
-	id_( 0 ),
-	name_( name ),
-	parent_( parent )
+UniversalNode::UniversalNode( const std::string& name, Node* parent )
+	: name_{ name }
+	, parent_{ parent }
+	, id_{ 0 }
 {
 }
 
 
 
-UniversalNode::~UniversalNode() 
-{
-	for ( auto node : subnodes_ )
-	{
-		delete node;
-	}
-}
-
-
-
-size_t 
+size_t
 UniversalNode::getId() const
 {
 	return id_;
@@ -36,7 +26,7 @@ UniversalNode::getId() const
 
 
 
-std::string 
+std::string
 UniversalNode::getName() const
 {
 	return name_;
@@ -44,7 +34,7 @@ UniversalNode::getName() const
 
 
 
-bool 
+bool
 UniversalNode::isComposite() const
 {
 	return !subnodes_.empty();
@@ -52,7 +42,7 @@ UniversalNode::isComposite() const
 
 
 
-std::string 
+std::string
 UniversalNode::getValue() const
 {
 	return value_;
@@ -60,19 +50,19 @@ UniversalNode::getValue() const
 
 
 
-void 
+void
 UniversalNode::setValue( const std::string& value )
 {
 	if ( !subnodes_.empty() )
 	{
-		throw std::logic_error( "Could not add value to composite node" );
+		throw std::logic_error{ "Could not add value to composite node" };
 	}
 	value_ = value;
 }
 
 
 
-void 
+void
 UniversalNode::setId( size_t id )
 {
 	id_ = id;
@@ -80,44 +70,44 @@ UniversalNode::setId( size_t id )
 
 
 
-Node* 
+Node::SharedPointer
 UniversalNode::addNode( const std::string& name )
 {
 	value_.clear();
-	Node* subnode = new UniversalNode( name, this );
+	auto subnode = std::make_shared< UniversalNode >( name, this );
 	subnodes_.push_back( subnode );
 	return subnode;
 }
 
 
 
-Node* 
+Node&
 UniversalNode::getParent() const
 {
-	return parent_;
+	return *parent_;
 }
 
 
 
-void 
+void
 UniversalNode::visit( Visitor& visitor )
 {
 	visitor.accept( *this );
-	for ( NodesIterator iNode = subnodes_.begin(); iNode != subnodes_.end(); ++iNode )
+	for ( auto& node : subnodes_ )
 	{
-		(*iNode)->visit( visitor );
+		node->visit( visitor );
 	}
 }
 
 
 
-void 
+void
 UniversalNode::visit( ConstVisitor& visitor ) const
 {
 	visitor.accept( *this );
-	for ( NodesConstIterator iNode = subnodes_.begin(); iNode != subnodes_.end(); ++iNode )
+	for ( const auto& node : subnodes_ )
 	{
-		(*iNode)->visit( visitor );
+		node->visit( visitor );
 	}
 }
 

@@ -9,31 +9,35 @@ namespace simple
 {
 
 
-CommandLineOptions::CommandLineOptions( const std::string& keySign ) :
-	keySign_( keySign )
+CommandLineOptions::CommandLineOptions( const std::string& keySign )
+	: keySign_{ keySign }
 {
 	assert( !keySign_.empty() && "CommandLineOptions creation error: key sign should not be empty" );
 }
 
-	
 
-CommandLineOptions::CommandLineOptions( const CommandLineOptions& options ) :
-	keys_( options.keys_ ),
-	options_( options.options_ ),
-	executableName_( options.executableName_ ),
-	keySign_( options.keySign_ )
+
+CommandLineOptions::CommandLineOptions( const CommandLineOptions& options )
+	: keys_{ options.keys_ }
+	, options_{ options.options_ }
+	, executableName_{ options.executableName_ }
+	, keySign_{ options.keySign_ }
 {
 }
 
 
 
-CommandLineOptions::~CommandLineOptions()
+CommandLineOptions::CommandLineOptions(const CommandLineOptions&& options ) noexcept
+	: keys_{ std::move( options.keys_ ) }
+	, options_{ std::move( options.options_ ) }
+	, executableName_{ std::move( options.executableName_ ) }
+	, keySign_{ std::move( options.keySign_ ) }
 {
 }
 
 
 
-void 
+void
 CommandLineOptions::addKey( const std::string& key )
 {
 	keys_.insert( keySign_ + key );
@@ -41,17 +45,17 @@ CommandLineOptions::addKey( const std::string& key )
 
 
 
-void 
+void
 CommandLineOptions::parse( int argc, char* argv[] )
 {
 	if ( argc > 0 )
 	{
-		executableName_ = std::string( argv[ 0 ] );
+		executableName_ = std::string{ argv[ 0 ] };
 
 		std::string currentKey;
 		for ( int i = 1; i < argc; ++i )
 		{
-			std::string token( argv[ i ] );
+			std::string token{ argv[ i ] };
 			if ( this->isKey( token ) )
 			{
 				this->checkIfKeyAllowed( token );
@@ -68,27 +72,27 @@ CommandLineOptions::parse( int argc, char* argv[] )
 
 
 
-bool 
+bool
 CommandLineOptions::isKey( const std::string& token ) const
 {
 	return isStartWith( token, keySign_ );
 }
 
-	
 
-void 
+
+void
 CommandLineOptions::checkIfKeyAllowed( const std::string& key ) const
 {
 	bool isAllowed = (keys_.find( key ) != keys_.end());
 	if ( !isAllowed )
 	{
-		throw ParseException( "Unexpected option key '" + key + "'" );
+		throw ParseException{ "Unexpected option key '" + key + "'" };
 	}
 }
 
 
 
-bool 
+bool
 CommandLineOptions::isStartWith( const std::string& data, const std::string& start )
 {
 	if ( data.size() >= start.size() )
@@ -102,7 +106,7 @@ CommandLineOptions::isStartWith( const std::string& data, const std::string& sta
 
 
 
-bool 
+bool
 CommandLineOptions::has( const std::string& key ) const
 {
 	return (options_.find( keySign_ + key ) != options_.end());
@@ -110,7 +114,7 @@ CommandLineOptions::has( const std::string& key ) const
 
 
 
-std::string 
+std::string
 CommandLineOptions::get( const std::string& key ) const
 {
 	OptionsMap::const_iterator iOption = options_.find( keySign_ + key );
@@ -121,12 +125,12 @@ CommandLineOptions::get( const std::string& key ) const
 			return iOption->second;
 		}
 	}
-	throw ParseException( "Option '" + key + "' is not set" );
+	throw ParseException{ "Option '" + key + "' is not set" };
 }
 
 
 
-std::string 
+std::string
 CommandLineOptions::get( const std::string& key, const std::string& defaultValue ) const
 {
 	OptionsMap::const_iterator iOption = options_.find( keySign_ + key );
@@ -142,7 +146,7 @@ CommandLineOptions::get( const std::string& key, const std::string& defaultValue
 
 
 
-std::string 
+std::string
 CommandLineOptions::getExecutableName() const
 {
 	return executableName_;
@@ -150,7 +154,7 @@ CommandLineOptions::getExecutableName() const
 
 
 
-bool 
+bool
 CommandLineOptions::isEmpty() const
 {
 	return options_.empty();

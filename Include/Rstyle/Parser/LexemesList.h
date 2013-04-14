@@ -15,21 +15,22 @@ namespace rstyle
 
 class LexemesList
 {
+private :
+	typedef std::vector< Lexeme::SharedPointer > LexemesVector;
+
 public :
-	LexemesList();
-	virtual ~LexemesList();
+	explicit LexemesList( const std::string& document );
+	LexemesList( const LexemesList& ) = delete;
+	LexemesList& operator =( const LexemesList& ) = delete;
+	virtual ~LexemesList() = default;
 
-	void read( const std::string& document );
-	void fillNode( Node& node );
-
-private :
-	LexemesList( const LexemesList& );
-	LexemesList& operator =( const LexemesList& );
+	virtual Node::SharedPointer fillTree() const;
 
 private :
-	typedef std::vector< Lexeme* > LexemesVector;
-	typedef LexemesVector::iterator LexemesIterator;
-	LexemesVector lexemes_;
+	static LexemesVector read( const std::string& document );
+
+private :
+	const LexemesVector lexemes_;
 };
 
 

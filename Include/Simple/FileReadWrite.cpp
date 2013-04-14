@@ -1,4 +1,4 @@
-﻿// FileReadWrite.cpp
+// FileReadWrite.cpp
 
 #include <Simple/FileReadWrite.h>
 
@@ -12,17 +12,17 @@ namespace simple
 {
 
 
-std::string 
+std::string
 readFile( const std::string& name )
 {
-	std::ifstream inputFile( name.c_str(), std::ios_base::binary | std::ios_base::in );
+	std::ifstream inputFile{ name, std::ios_base::binary | std::ios_base::in };
 	if ( inputFile.is_open() )
 	{
 		const size_t bufferSize = 4096 * 1000;
 		std::string document;
 		std::vector< char > buffer( bufferSize, '\0' );
 		size_t nBytesRead = 0;
-		while ( !inputFile.eof() ) 
+		while ( !inputFile.eof() )
 		{
 			inputFile.read( &buffer.front(), bufferSize );
 			nBytesRead = static_cast< size_t >( inputFile.gcount() );
@@ -30,24 +30,23 @@ readFile( const std::string& name )
 		}
 		return document;
 	}
-	std::string message = "Could not open file '" + name + "'";
-	throw std::logic_error( message.c_str() );
+	throw std::logic_error{ "Could not open file '" + name + "'" };
 }
 
 
 
-void 
+void
 writeFile( const std::string& out, const std::string& fileName )
 {
-	std::ofstream outFile( fileName.c_str(), std::ios_base::out | std::ios_base::out );
+	std::ofstream outFile{ fileName };
 	if ( outFile.is_open() )
 	{
 		outFile.write( out.c_str(), out.size() );
 	}
 	else
 	{
-		std::string message = "Could not open file '" + fileName + "'";
-		throw std::logic_error( message.c_str() );
+		std::string message{ "Could not open file '" + fileName + "'" };
+		throw std::logic_error{ message };
 	}
 }
 

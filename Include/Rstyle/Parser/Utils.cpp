@@ -1,4 +1,4 @@
-﻿// Utils.cpp
+// Utils.cpp
 
 #include <Rstyle/Parser/Utils.h>
 #include <stdexcept>
@@ -30,41 +30,35 @@ skipSpaces( StringConstIterator iStart, const std::string& document )
 
 
 
-LexemePattern::LexemePattern( char symbol ) :
-	first_( symbol ),
-	last_( symbol )
+LexemePattern::LexemePattern( char symbol )
+	: first_{ symbol }
+	, last_{ symbol }
 {
 }
 
 
 
-LexemePattern::LexemePattern( char first, char last ) :
-	first_( first ),
-	last_( last )
+LexemePattern::LexemePattern( char first, char last )
+	: first_{ first }
+	, last_{ last }
 {
 	if ( first_ > last_ )
 	{
-		throw std::logic_error( "LexemePattern construction exception" );
+		throw std::logic_error{ "LexemePattern construction exception" };
 	}
 }
 
 
 
-LexemePattern::LexemePattern( const LexemePattern& pattern ) :
-	first_( pattern.first_ ),
-	last_( pattern.last_ )
+LexemePattern::LexemePattern( const LexemePattern& pattern )
+	: first_{ pattern.first_ }
+	, last_{ pattern.last_ }
 {
 }
 
 
 
-LexemePattern::~LexemePattern() 
-{
-}
-
-
-
-bool 
+bool
 LexemePattern::isMatch( char symbol ) const
 {
 	return ((first_ <= symbol) && (last_ >= symbol));

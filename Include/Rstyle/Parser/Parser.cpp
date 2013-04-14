@@ -10,38 +10,10 @@ namespace rstyle
 {
 
 
-Parser::Parser()
+Node::SharedPointer Parser::parse(const std::string& document ) const
 {
-}
-
-
-	
-Parser::Parser( const Parser& )
-{
-}
-
-
-
-Parser::~Parser()
-{
-}
-
-
-
-Parser& 
-Parser::operator =( const Parser& )
-{
-	return *this;
-}
-
-
-
-void
-Parser::parse( Node& root, const std::string& document ) const
-{
-	LexemesList lexemes;
-	lexemes.read( document );
-	lexemes.fillNode( root );
+	LexemesList lexemes{ document };
+	return lexemes.fillTree();
 }
 
 
