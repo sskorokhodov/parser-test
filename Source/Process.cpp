@@ -39,8 +39,8 @@ void printIds( const rstyle::Node& node )
 {
 	for ( const auto& subnode : node )
 	{
-		std::cout << subnode->getId() << std::endl;
-		printIds( *subnode );
+		std::cout << subnode.getId() << std::endl;
+		printIds( subnode );
 	}
 }
 

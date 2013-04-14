@@ -48,20 +48,31 @@ public :
 			return (*impl_) != (*other.impl_);
 		}
 
-		const Node::SharedPointer& operator *() const
+		Node& operator *()
 		{
-			auto& node = **impl_;
-			if (node == Node::null)
-			{
-				throw std::logic_error{ "Could not return iterator value in end position" };
-			}
-			return node;
+			return getValue();
+		}
+
+		const Node& operator *() const
+		{
+			return getValue();
 		}
 
 		Iterator operator ++()
 		{
 			++(*impl_);
 			return *this;
+		}
+
+	private :
+		Node& getValue() const
+		{
+			auto& node = **impl_;
+			if (node == Node::null)
+			{
+				throw std::logic_error{ "Could not return iterator value in end position" };
+			}
+			return *node;
 		}
 
 	private :
