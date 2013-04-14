@@ -38,7 +38,7 @@ public :
 	StructureWriter& operator =( const StructureWriter& ) = delete;
 	virtual ~StructureWriter() noexcept = default;
 
-	virtual std::string write( const Node& node ) const override;
+	virtual std::string write( const Node< int >& node ) const override;
 };
 
 

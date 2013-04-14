@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include <Rstyle/Parser/Node.h>
+#include <Rstyle/Parser/Node.hpp>
 
 
 
@@ -18,7 +18,7 @@ class Writer
 public :
 	virtual ~Writer() = default;
 
-	virtual std::string write( const Node& root ) const = 0;
+	virtual std::string write( const Node< int >& root ) const = 0;
 };
 
 

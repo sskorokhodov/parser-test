@@ -35,8 +35,8 @@ NameLexeme::NameLexeme( const StringConstIterator& iStart, const std::string& do
 
 
 
-Node&
-NameLexeme::applyTo( Node& node ) const
+Node< int >&
+NameLexeme::applyTo( Node< int >& node ) const
 {
 	auto subnode = node.addNode( std::string( begin_, end_ ) );
 	return *subnode;

@@ -20,7 +20,7 @@ public :
 	ListBeginLexeme& operator =( const ListBeginLexeme& ) = delete;
 	virtual ~ListBeginLexeme() noexcept = default;
 
-	virtual Node& applyTo( Node& node ) const override;
+	virtual Node< int >& applyTo( Node< int >& node ) const override;
 	virtual LexemeType getType() const override;
 	virtual void changeExpectedMatches( int& count ) const override;
 

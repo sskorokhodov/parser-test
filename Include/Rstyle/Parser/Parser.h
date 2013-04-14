@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include <Rstyle/Parser/Node.h>
+#include <Rstyle/Parser/Node.hpp>
 
 
 
@@ -21,7 +21,7 @@ public :
 	Parser& operator =( const Parser& ) = default;
 	virtual ~Parser() = default;
 
-	virtual Node::SharedPointer parse( const std::string& document ) const;
+	virtual Node< int >::SharedPointer parse( const std::string& document ) const;
 };
 
 

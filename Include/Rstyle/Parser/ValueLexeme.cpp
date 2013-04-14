@@ -39,8 +39,8 @@ ValueLexeme::ValueLexeme( const StringConstIterator& iStart, const std::string& 
 
 
 
-Node&
-ValueLexeme::applyTo( Node& node ) const
+Node< int >&
+ValueLexeme::applyTo( Node< int >& node ) const
 {
 	node.setValue( { begin_, end_ } );
 	return node.getParent();

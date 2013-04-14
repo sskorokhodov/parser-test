@@ -3,7 +3,7 @@
 #ifndef RSTYLE_PARSER_LEXEME_H
 #define RSTYLE_PARSER_LEXEME_H
 
-#include <Rstyle/Parser/Node.h>
+#include <Rstyle/Parser/Node.hpp>
 #include <memory>
 
 
@@ -31,7 +31,7 @@ public :
 	virtual ~Lexeme() = default;
 
 	virtual SharedPointer parseNext( const std::string& document ) const = 0;
-	virtual Node& applyTo( Node& node ) const = 0;
+	virtual Node< int >& applyTo( Node< int >& node ) const = 0;
 	virtual LexemeType getType() const = 0;
 	virtual void changeExpectedMatches( int& count ) const = 0;
 

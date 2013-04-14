@@ -49,8 +49,8 @@ AssignLexeme::parseNext( const std::string& document ) const
 
 
 
-Node&
-AssignLexeme::applyTo( Node& node ) const
+Node< int >&
+AssignLexeme::applyTo( Node< int >& node ) const
 {
 	return node;
 }

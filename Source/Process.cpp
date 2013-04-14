@@ -13,7 +13,7 @@
 
 namespace
 {
-	class IndexingVisitor : public rstyle::Node::Visitor
+	class IndexingVisitor : public rstyle::Node< int >::Visitor
 	{
 	public :
 		IndexingVisitor()
@@ -21,9 +21,9 @@ namespace
 		{
 		}
 
-		void accept( rstyle::Node& node ) override
+		void accept( rstyle::Node< int >& node ) override
 		{
-			node.setId( id_ );
+			node.getData() = id_;
 			++id_;
 		}
 
@@ -35,11 +35,11 @@ namespace
 
 
 
-void printIds( const rstyle::Node& node )
+void printIds( const rstyle::Node< int >& node )
 {
 	for ( const auto& subnode : node )
 	{
-		std::cout << subnode.getId() << std::endl;
+		std::cout << subnode.getData() << std::endl;
 		printIds( subnode );
 	}
 }

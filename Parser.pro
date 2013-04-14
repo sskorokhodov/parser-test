@@ -13,10 +13,8 @@ SOURCES += \
     Source/Main.cpp \
     Include/Rstyle/Parser/ValueLexeme.cpp \
     Include/Rstyle/Parser/Utils.cpp \
-    Include/Rstyle/Parser/UniversalNode.cpp \
     Include/Rstyle/Parser/StructureWriter.cpp \
     Include/Rstyle/Parser/Parser.cpp \
-    Include/Rstyle/Parser/NodesTree.cpp \
     Include/Rstyle/Parser/NameLexeme.cpp \
     Include/Rstyle/Parser/ListEndLexeme.cpp \
     Include/Rstyle/Parser/ListBeginLexeme.cpp \
@@ -26,19 +24,15 @@ SOURCES += \
     Include/Simple/FileReadWrite.cpp \
     Include/Simple/ConvertEncoding.cpp \
 		Include/Simple/CommandLineOptions.cpp \
-    Include/Rstyle/Parser/Lexeme.cpp \
-    Include/Rstyle/Parser/Node.cpp
+    Include/Rstyle/Parser/Lexeme.cpp
 
 HEADERS += \
     Source/Process.h \
     Include/Rstyle/Parser/Writer.h \
     Include/Rstyle/Parser/ValueLexeme.h \
     Include/Rstyle/Parser/Utils.h \
-    Include/Rstyle/Parser/UniversalNode.h \
     Include/Rstyle/Parser/StructureWriter.h \
     Include/Rstyle/Parser/Parser.h \
-    Include/Rstyle/Parser/NodesTree.h \
-    Include/Rstyle/Parser/Node.h \
     Include/Rstyle/Parser/NameLexeme.h \
     Include/Rstyle/Parser/ListEndLexeme.h \
     Include/Rstyle/Parser/ListBeginLexeme.h \
@@ -50,4 +44,7 @@ HEADERS += \
     Include/Simple/FileReadWrite.h \
     Include/Simple/ConvertToString.hpp \
     Include/Simple/ConvertEndoding.h \
-		Include/Simple/CommandLineOptions.h
+		Include/Simple/CommandLineOptions.h \
+    Include/Rstyle/Parser/Node.hpp \
+    Include/Rstyle/Parser/UniversalNode.hpp \
+    Include/Rstyle/Parser/NodesTree.hpp

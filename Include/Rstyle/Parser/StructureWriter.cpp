@@ -12,13 +12,13 @@ namespace rstyle
 
 namespace
 {
-	class InfoCollectingNodeVisitor : public rstyle::Node::ConstVisitor
+	class InfoCollectingNodeVisitor : public rstyle::Node< int >::ConstVisitor
 	{
 	public :
-		void accept( const rstyle::Node& node )
+		void accept( const Node< int >& node )
 		{
-			info_ += simple::convertToString( node.getId() );
-			info_ += ", " + simple::convertToString( node.getParent().getId() );
+			info_ += simple::convertToString( node.getData() );
+			info_ += ", " + simple::convertToString( node.getParent().getData() );
 			info_ += ", " + node.getName();
 			if ( !node.isComposite() )
 			{
@@ -45,7 +45,7 @@ namespace
  * @return Returns string that contains structured view of nones tree.
  */
 std::string
-StructureWriter::write( const Node& node ) const
+StructureWriter::write( const Node< int >& node ) const
 {
 	InfoCollectingNodeVisitor infoCollector;
 	node.visit( infoCollector );

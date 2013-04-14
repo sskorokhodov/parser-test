@@ -30,8 +30,8 @@ ListEndLexeme::ListEndLexeme(
 
 
 
-Node&
-ListEndLexeme::applyTo( Node& node ) const
+Node< int >&
+ListEndLexeme::applyTo( Node< int >& node ) const
 {
 	return node.getParent();
 }

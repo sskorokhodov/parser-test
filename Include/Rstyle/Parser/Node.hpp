@@ -1,7 +1,7 @@
-// Node.h
+// Node.hpp
 
-#ifndef RSTYLE_PARSER_NODE_H
-#define RSTYLE_PARSER_NODE_H
+#ifndef RSTYLE_PARSER_NODE_HPP
+#define RSTYLE_PARSER_NODE_HPP
 
 #include <string>
 #include <memory>
@@ -14,9 +14,11 @@ namespace rstyle
 {
 
 
+template< class T >
 class Node
 {
 public :
+	typedef T DataType;
 	typedef std::shared_ptr< Node > SharedPointer;
 
 	class Visitor;
@@ -27,14 +29,14 @@ public :
 public :
 	virtual ~Node() = default;
 
-	virtual size_t getId() const = 0;
+	virtual DataType& getData() = 0;
+	virtual const DataType& getData() const = 0;
 	virtual Node& getParent() const = 0;
 	virtual std::string getName() const = 0;
 	virtual std::string getValue() const = 0;
 	virtual bool isComposite() const = 0;
 
 	virtual void setValue( const std::string& value ) = 0;
-	virtual void setId( size_t id ) = 0;
 	virtual SharedPointer addNode( const std::string& name ) = 0;
 
 	virtual void visit( Visitor& visitor ) = 0;
@@ -47,9 +49,13 @@ public :
 	static const SharedPointer null;
 };
 
+template< class T >
+const typename Node< T >::SharedPointer Node< T >::null;
 
 
-class Node::IteratorImpl
+
+template< class T >
+class Node< T >::IteratorImpl
 {
 public :
 	typedef std::shared_ptr< IteratorImpl > SharedPointer;
@@ -63,13 +69,14 @@ public :
 
 
 
-class Node::Iterator final
+template< class T >
+class Node< T >::Iterator final
 {
 public :
 	typedef std::shared_ptr< Iterator > SharedPointer;
 
 public :
-	explicit Iterator( const IteratorImpl::SharedPointer& impl )
+	explicit Iterator( const typename IteratorImpl::SharedPointer& impl )
 		: impl_{ impl }
 	{
 	}
@@ -107,12 +114,13 @@ private :
 	}
 
 private :
-	IteratorImpl::SharedPointer impl_;
+	typename IteratorImpl::SharedPointer impl_;
 };
 
 
 
-class Node::Visitor
+template< class T >
+class Node< T >::Visitor
 {
 public :
 	virtual ~Visitor() = default;
@@ -122,7 +130,8 @@ public :
 
 
 
-class Node::ConstVisitor
+template< class T >
+class Node< T >::ConstVisitor
 {
 public :
 	virtual ~ConstVisitor() = default;
@@ -133,4 +142,4 @@ public :
 
 } // rstyle
 
-#endif // RSTYLE_PARSER_NODE_H
+#endif // RSTYLE_PARSER_NODE_HPP

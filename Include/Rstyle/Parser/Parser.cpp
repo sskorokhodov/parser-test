@@ -10,7 +10,7 @@ namespace rstyle
 {
 
 
-Node::SharedPointer Parser::parse(const std::string& document ) const
+Node< int >::SharedPointer Parser::parse(const std::string& document ) const
 {
 	LexemesList lexemes{ document };
 	return lexemes.fillTree();

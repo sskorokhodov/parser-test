@@ -4,7 +4,7 @@
 
 #include <Rstyle/Parser/LexemesPairsMatchChecker.h>
 #include <Rstyle/Parser/NameLexeme.h>
-#include <Rstyle/Parser/NodesTree.h>
+#include <Rstyle/Parser/NodesTree.hpp>
 
 
 namespace rstyle
@@ -42,11 +42,11 @@ LexemesList::read( const std::string& document )
 
 
 
-Node::SharedPointer
+Node< int >::SharedPointer
 LexemesList::fillTree() const
 {
-	auto root = std::make_shared< NodesTree >();
-	Node* nextNode = root.get();
+	auto root = std::make_shared< NodesTree< int > >();
+	Node< int >* nextNode = root.get();
 	for ( const auto& lexeme : lexemes_ )
 	{
 		nextNode = &(lexeme->applyTo( *nextNode ));
