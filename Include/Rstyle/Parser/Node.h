@@ -54,6 +54,8 @@ class Node::IteratorImpl
 public :
 	typedef std::shared_ptr< IteratorImpl > SharedPointer;
 
+	virtual ~IteratorImpl() = default;
+
 	virtual bool operator !=( const IteratorImpl& other ) const noexcept = 0;
 	virtual const Node::SharedPointer& operator *() const noexcept = 0;
 	virtual IteratorImpl& operator ++() = 0;
@@ -61,13 +63,13 @@ public :
 
 
 
-class Node::Iterator
+class Node::Iterator final
 {
 public :
 	typedef std::shared_ptr< Iterator > SharedPointer;
 
 public :
-	Iterator( const IteratorImpl::SharedPointer& impl )
+	explicit Iterator( const IteratorImpl::SharedPointer& impl )
 		: impl_{ impl }
 	{
 	}
