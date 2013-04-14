@@ -17,67 +17,12 @@ namespace rstyle
 class Node
 {
 public :
-	class Visitor;
-	class ConstVisitor;
 	typedef std::shared_ptr< Node > SharedPointer;
 
-public :
-	class IteratorImpl
-	{
-	public :
-		typedef std::shared_ptr< IteratorImpl > SharedPointer;
-
-		virtual bool operator !=( const IteratorImpl& other ) const noexcept = 0;
-		virtual const Node::SharedPointer& operator *() const noexcept = 0;
-		virtual IteratorImpl& operator ++() = 0;
-	};
-
-	class Iterator
-	{
-	public :
-		typedef std::shared_ptr< Iterator > SharedPointer;
-
-	public :
-		Iterator( const IteratorImpl::SharedPointer& impl )
-			: impl_{ impl }
-		{
-		}
-
-		bool operator !=( const Iterator& other ) const
-		{
-			return (*impl_) != (*other.impl_);
-		}
-
-		Node& operator *()
-		{
-			return getValue();
-		}
-
-		const Node& operator *() const
-		{
-			return getValue();
-		}
-
-		Iterator operator ++()
-		{
-			++(*impl_);
-			return *this;
-		}
-
-	private :
-		Node& getValue() const
-		{
-			auto& node = **impl_;
-			if (node == Node::null)
-			{
-				throw std::logic_error{ "Could not return iterator value in end position" };
-			}
-			return *node;
-		}
-
-	private :
-		IteratorImpl::SharedPointer impl_;
-	};
+	class Visitor;
+	class ConstVisitor;
+	class IteratorImpl;
+	class Iterator;
 
 public :
 	virtual ~Node() = default;
@@ -100,6 +45,67 @@ public :
 
 public :
 	static const SharedPointer null;
+};
+
+
+
+class Node::IteratorImpl
+{
+public :
+	typedef std::shared_ptr< IteratorImpl > SharedPointer;
+
+	virtual bool operator !=( const IteratorImpl& other ) const noexcept = 0;
+	virtual const Node::SharedPointer& operator *() const noexcept = 0;
+	virtual IteratorImpl& operator ++() = 0;
+};
+
+
+
+class Node::Iterator
+{
+public :
+	typedef std::shared_ptr< Iterator > SharedPointer;
+
+public :
+	Iterator( const IteratorImpl::SharedPointer& impl )
+		: impl_{ impl }
+	{
+	}
+
+	bool operator !=( const Iterator& other ) const
+	{
+		return (*impl_) != (*other.impl_);
+	}
+
+	Node& operator *()
+	{
+		return getValue();
+	}
+
+	const Node& operator *() const
+	{
+		return getValue();
+	}
+
+	Iterator operator ++()
+	{
+		++(*impl_);
+		return *this;
+	}
+
+private :
+	Node& getValue() const
+	{
+		auto& node = **impl_;
+		if (node == Node::null)
+		{
+			throw std::logic_error{ "Could not return iterator value in end position" };
+		}
+		return *node;
+	}
+
+private :
+	IteratorImpl::SharedPointer impl_;
 };
 
 
