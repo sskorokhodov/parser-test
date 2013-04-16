@@ -45,6 +45,6 @@ HEADERS += \
     Include/Simple/ConvertToString.hpp \
     Include/Simple/ConvertEndoding.h \
 		Include/Simple/CommandLineOptions.h \
-    Include/Rstyle/Parser/Node.hpp \
-    Include/Rstyle/Parser/UniversalNode.hpp \
-    Include/Rstyle/Parser/NodesTree.hpp
+    Include/Rstyle/Parser/nodetree/UniversalNode.hpp \
+    Include/Rstyle/Parser/nodetree/NodesTree.hpp \
+    Include/Rstyle/Parser/nodetree/Node.hpp
