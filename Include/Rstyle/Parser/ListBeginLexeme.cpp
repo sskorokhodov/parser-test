@@ -1,10 +1,10 @@
 // ListBeginLexeme.cpp
 
-#include <Rstyle/Parser/ListBeginLexeme.h>
+#include <rstyle/parser/ListBeginLexeme.h>
 
-#include <Rstyle/Parser/ListEndLexeme.h>
-#include <Rstyle/Parser/NameLexeme.h>
-#include <Rstyle/Parser/Exceptions.h>
+#include <rstyle/parser/ListEndLexeme.h>
+#include <rstyle/parser/NameLexeme.h>
+#include <rstyle/parser/Exceptions.h>
 
 
 

@@ -1,8 +1,8 @@
 // LexemesPairsMatchChecker.cpp
 
-#include <Rstyle/Parser/LexemesPairsMatchChecker.h>
+#include <rstyle/parser/LexemesPairsMatchChecker.h>
 
-#include <Rstyle/Parser/Exceptions.h>
+#include <rstyle/parser/Exceptions.h>
 
 
 

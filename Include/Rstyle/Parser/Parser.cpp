@@ -1,8 +1,8 @@
 // Parser.h
 
-#include <Rstyle/Parser/Parser.h>
+#include <rstyle/parser/Parser.h>
 
-#include <Rstyle/Parser/LexemesList.h>
+#include <rstyle/parser/LexemesList.h>
 
 
 

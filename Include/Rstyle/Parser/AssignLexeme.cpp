@@ -1,10 +1,10 @@
 // AssignLexeme.cpp
 
-#include <Rstyle/Parser/AssignLexeme.h>
+#include <rstyle/parser/AssignLexeme.h>
 
-#include <Rstyle/Parser/ValueLexeme.h>
-#include <Rstyle/Parser/ListBeginLexeme.h>
-#include <Rstyle/Parser/Exceptions.h>
+#include <rstyle/parser/ValueLexeme.h>
+#include <rstyle/parser/ListBeginLexeme.h>
+#include <rstyle/parser/Exceptions.h>
 
 
 

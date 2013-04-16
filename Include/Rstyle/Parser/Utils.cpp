@@ -1,6 +1,6 @@
 // Utils.cpp
 
-#include <Rstyle/Parser/Utils.h>
+#include <rstyle/parser/Utils.h>
 #include <stdexcept>
 
 

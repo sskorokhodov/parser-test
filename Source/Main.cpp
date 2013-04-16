@@ -5,7 +5,7 @@
 #include <Simple/ConvertEndoding.h>
 #include <Simple/CommandLineOptions.h>
 
-#include <Rstyle/Parser/Exceptions.h>
+#include <rstyle/parser/Exceptions.h>
 
 #include "Process.h"
 

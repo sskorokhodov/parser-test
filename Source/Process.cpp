@@ -4,8 +4,8 @@
 
 #include <Simple/FileReadWrite.h>
 
-#include <Rstyle/Parser/Parser.h>
-#include <Rstyle/Parser/StructureWriter.h>
+#include <rstyle/parser/Parser.h>
+#include <rstyle/parser/StructureWriter.h>
 
 #include <iostream>
 

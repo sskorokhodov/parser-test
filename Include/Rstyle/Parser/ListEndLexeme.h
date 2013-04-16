@@ -3,8 +3,8 @@
 #ifndef RSTYLE_PARSER_LIST_END_LEXEME_H
 #define RSTYLE_PARSER_LIST_END_LEXEME_H
 
-#include <Rstyle/Parser/Lexeme.h>
-#include <Rstyle/Parser/Utils.h>
+#include <rstyle/parser/Lexeme.h>
+#include <rstyle/parser/Utils.h>
 
 
 

@@ -1,8 +1,8 @@
 // NameLexeme.cpp
 
-#include <Rstyle/Parser/NameLexeme.h>
+#include <rstyle/parser/NameLexeme.h>
 
-#include <Rstyle/Parser/AssignLexeme.h>
+#include <rstyle/parser/AssignLexeme.h>
 
 
 

@@ -1,10 +1,10 @@
 // LexemesList.cpp
 
-#include <Rstyle/Parser/LexemesList.h>
+#include <rstyle/parser/LexemesList.h>
 
-#include <Rstyle/Parser/LexemesPairsMatchChecker.h>
-#include <Rstyle/Parser/NameLexeme.h>
-#include <Rstyle/Parser/NodesTree.hpp>
+#include <rstyle/parser/LexemesPairsMatchChecker.h>
+#include <rstyle/parser/NameLexeme.h>
+#include <rstyle/parser/nodetree/NodesTree.hpp>
 
 
 namespace rstyle
