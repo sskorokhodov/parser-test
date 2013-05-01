@@ -71,14 +71,14 @@ int main( int argc, char* argv[] )
 	catch ( const simple::CommandLineOptions::ParseException& e )
 	{
 		std::cerr << e.what() << std::endl;
-		std::cerr << simple::convertUtf8ToOem( "Неверные аргументы командной строки" ) << std::endl;
+		std::cerr << simple::convertUtf8ToOem( u8"Неверные аргументы командной строки" ) << std::endl;
 		::printHelp();
 		return static_cast< int >( ExecutionResultCode::COMMAND_LINE_ARGUMENTS );
 	}
 	catch ( const rstyle::ParseException& e )
 	{
 		std::cerr << e.what() << std::endl;
-		std::cerr << simple::convertUtf8ToOem( "Неверный формат данных" ) << std::endl;
+		std::cerr << simple::convertUtf8ToOem( u8"Неверный формат данных" ) << std::endl;
 		return static_cast< int >( ExecutionResultCode::PARSING );
 	}
 	catch ( const std::exception& e )
