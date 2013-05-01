@@ -20,43 +20,7 @@ private :
 	typedef std::vector< typename Node< T >::SharedPointer > NodesVector;
 
 protected :
-	class IteratorImpl : public Node< T >::IteratorImpl
-	{
-	public :
-		IteratorImpl( const typename NodesVector::const_iterator& subnodesIterator, const NodesVector* subnodes )
-			: subnodesIterator_{ subnodesIterator }
-			, subnodes_{ subnodes }
-		{
-		}
-
-		virtual bool operator !=( const typename Node< T >::IteratorImpl& other ) const noexcept override
-		{
-			if ( subnodesIterator_ ==  subnodes_->end() )
-			{
-				return Node< T >::null != *other;
-			}
-			return *subnodesIterator_ != *other;
-		}
-
-		virtual const typename Node< T >::SharedPointer& operator *() const noexcept override
-		{
-			if ( subnodesIterator_ ==  subnodes_->end() )
-			{
-				return Node< T >::null;
-			}
-			return *subnodesIterator_;
-		}
-
-		virtual IteratorImpl& operator ++() override
-		{
-			++subnodesIterator_;
-			return *this;
-		}
-
-	private :
-		typename NodesVector::const_iterator subnodesIterator_;
-		const NodesVector* subnodes_;
-	};
+	class IteratorImpl;
 
 public :
 	UniversalNode( const std::string& name, Node< T >* parent )
@@ -187,6 +151,50 @@ private :
 	std::string value_;
 	NodesVector subnodes_;
 	typename Node< T >::DataType id_;
+};
+
+
+
+
+
+template< class T >
+class UniversalNode< T >::IteratorImpl : public Node< T >::IteratorImpl
+{
+public :
+	IteratorImpl( const typename NodesVector::const_iterator& subnodesIterator, const NodesVector* subnodes )
+		: subnodesIterator_{ subnodesIterator }
+		, subnodes_{ subnodes }
+	{
+	}
+
+	virtual bool operator !=( const typename Node< T >::IteratorImpl& other ) const noexcept override
+	{
+		if ( subnodesIterator_ ==  subnodes_->end() )
+		{
+			return Node< T >::null != *other;
+		}
+		return *subnodesIterator_ != *other;
+	}
+
+	virtual const typename Node< T >::SharedPointer& operator *() const noexcept override
+	{
+		if ( subnodesIterator_ == subnodes_->end() )
+		{
+			return Node< T >::null;
+		}
+		return *subnodesIterator_;
+	}
+
+	virtual IteratorImpl& operator ++()
+	override
+	{
+		++subnodesIterator_;
+		return *this;
+	}
+
+private :
+	typename NodesVector::const_iterator subnodesIterator_;
+	const NodesVector* subnodes_;
 };
 
 

@@ -18,58 +18,10 @@ template< class T >
 class NodesTree : public Node< T >
 {
 private :
-	class CountNodesVisitor : public Node< T >::Visitor
-	{
-	public :
-		CountNodesVisitor()
-			: count_{ 0 }
-		{
-		}
-
-		virtual void accept( Node< T >& ) override
-		{
-			++count_;
-		}
-
-		size_t getCount() const
-		{
-			return count_;
-		}
-
-	private :
-		size_t count_;
-	};
+	class CountNodesVisitor;
 
 protected :
-	class IteratorImpl : public Node< T >::IteratorImpl
-	{
-	public :
-		explicit IteratorImpl( const typename Node< T >::SharedPointer& node )
-			: node_{ node }
-		{
-		}
-
-		virtual bool operator !=( const typename Node< T >::IteratorImpl& other ) const noexcept override
-		{
-			return node_ != *other;
-		}
-
-		virtual const typename Node< T >::SharedPointer& operator *() const noexcept override
-		{
-			return node_;
-		}
-
-		virtual IteratorImpl& operator ++() override
-		{
-			node_ = Node< T >::null;
-			return *this;
-		}
-
-	private :
-		typename Node< T >::SharedPointer node_;
-	};
-
-
+	class IteratorImpl;
 
 public :
 	NodesTree()
@@ -186,6 +138,66 @@ public :
 private :
 	typename Node< T >::DataType id_;
 	typename Node< T >::SharedPointer firstNode_;
+};
+
+
+
+
+
+template< class T >
+class NodesTree< T >::CountNodesVisitor : public Node< T >::Visitor
+{
+public :
+	CountNodesVisitor()
+		: count_{ 0 }
+	{
+	}
+
+	virtual void accept( Node< T >& ) override
+	{
+		++count_;
+	}
+
+	size_t getCount() const
+	{
+		return count_;
+	}
+
+private :
+	size_t count_;
+};
+
+
+
+
+
+template< class T >
+class NodesTree< T >::IteratorImpl : public Node< T >::IteratorImpl
+{
+public :
+	explicit IteratorImpl( const typename Node< T >::SharedPointer& node )
+		: node_{ node }
+	{
+	}
+
+	virtual bool operator !=( const typename Node< T >::IteratorImpl& other ) const noexcept override
+	{
+		return node_ != *other;
+	}
+
+	virtual const typename Node< T >::SharedPointer& operator *() const noexcept override
+	{
+		return node_;
+	}
+
+	virtual IteratorImpl& operator ++() override
+	{
+		node_ = Node< T >::null;
+		return *this;
+	}
+
+private :
+	typename Node< T >::SharedPointer node_;
 };
 
 
