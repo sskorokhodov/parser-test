@@ -4,7 +4,7 @@
 
 #include <rstyle/parser/LexemesPairsMatchChecker.h>
 #include <rstyle/parser/NameLexeme.h>
-#include <rstyle/parser/nodetree/NodesTree.hpp>
+#include <rstyle/nodetree/NodesTree.hpp>
 
 
 namespace rstyle

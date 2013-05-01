@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include <rstyle/parser/nodetree/Node.hpp>
+#include <rstyle/nodetree/Node.hpp>
 
 
 
