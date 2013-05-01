@@ -24,7 +24,7 @@ public :
 	LexemesList& operator =( const LexemesList& ) = delete;
 	virtual ~LexemesList() = default;
 
-	virtual typename Node< int >::SharedPointer fillTree() const;
+	virtual void fillTree( BaseNode& root) const;
 
 private :
 	static LexemesVector read( const std::string& document );

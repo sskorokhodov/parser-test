@@ -42,16 +42,14 @@ LexemesList::read( const std::string& document )
 
 
 
-Node< int >::SharedPointer
-LexemesList::fillTree() const
+void
+LexemesList::fillTree( BaseNode& root ) const
 {
-	auto root = std::make_shared< NodesTree< int > >();
-	Node< int >* nextNode = root.get();
+	BaseNode* nextNode = &root;
 	for ( const auto& lexeme : lexemes_ )
 	{
 		nextNode = &(lexeme->applyTo( *nextNode ));
 	}
-	return root;
 }
 
 

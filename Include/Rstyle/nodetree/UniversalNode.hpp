@@ -92,12 +92,12 @@ public :
 
 
 
-	virtual typename Node< T >::SharedPointer addNode( const std::string& name )
+	virtual Node< T >& addNode( const std::string& name )
 	{
 		value_.clear();
 		auto subnode = std::make_shared< UniversalNode >( name, this );
 		subnodes_.push_back( subnode );
-		return subnode;
+		return *subnode;
 	}
 
 

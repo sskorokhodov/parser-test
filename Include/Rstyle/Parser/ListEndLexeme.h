@@ -20,7 +20,7 @@ public :
 	ListEndLexeme& operator =( const ListEndLexeme& ) = delete;
 	virtual ~ListEndLexeme() noexcept = default;
 
-	virtual Node< int >& applyTo( Node< int >& node ) const override;
+	virtual BaseNode& applyTo( BaseNode& node ) const override;
 	virtual LexemeType getType() const override;
 	virtual void changeExpectedMatches( int& count ) const override;
 	virtual SharedPointer parseNext( const std::string& document ) const override;

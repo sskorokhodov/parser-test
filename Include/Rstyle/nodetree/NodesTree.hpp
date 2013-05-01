@@ -85,10 +85,10 @@ public :
 
 
 
-	virtual typename Node< T >::SharedPointer addNode( const std::string& name ) override
+	virtual Node< T >& addNode( const std::string& name ) override
 	{
 		firstNode_ = std::make_shared< UniversalNode< T > >( name, this );
-		return firstNode_;
+		return *firstNode_;
 	}
 
 

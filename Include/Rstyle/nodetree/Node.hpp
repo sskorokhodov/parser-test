@@ -14,8 +14,24 @@ namespace rstyle
 {
 
 
+class BaseNode
+{
+public :
+	virtual ~BaseNode() = default;
+
+	virtual BaseNode& getParent() const = 0;
+	virtual std::string getName() const = 0;
+	virtual std::string getValue() const = 0;
+	virtual bool isComposite() const = 0;
+
+	virtual void setValue( const std::string& value ) = 0;
+	virtual BaseNode& addNode( const std::string& name ) = 0;
+};
+
+
+
 template< class T >
-class Node
+class Node : public BaseNode
 {
 public :
 	typedef T DataType;
@@ -27,17 +43,12 @@ public :
 	class Iterator;
 
 public :
-	virtual ~Node() = default;
+	virtual ~Node() noexcept = default;
 
 	virtual DataType& getData() = 0;
 	virtual const DataType& getData() const = 0;
-	virtual Node& getParent() const = 0;
-	virtual std::string getName() const = 0;
-	virtual std::string getValue() const = 0;
-	virtual bool isComposite() const = 0;
 
-	virtual void setValue( const std::string& value ) = 0;
-	virtual SharedPointer addNode( const std::string& name ) = 0;
+	virtual Node& getParent() const override = 0 ;
 
 	virtual void visit( Visitor& visitor ) = 0;
 	virtual void visit( ConstVisitor& visitor ) const = 0;

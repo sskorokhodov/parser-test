@@ -31,8 +31,8 @@ ListBeginLexeme::ListBeginLexeme(
 
 
 
-Node< int >&
-ListBeginLexeme::applyTo( Node< int >& node ) const
+BaseNode&
+ListBeginLexeme::applyTo( BaseNode& node ) const
 {
 	return node;
 }

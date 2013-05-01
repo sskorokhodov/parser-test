@@ -20,7 +20,7 @@ public :
 	AssignLexeme& operator =( const AssignLexeme& ) = delete;
 	virtual ~AssignLexeme() noexcept = default;
 
-	virtual Node< int >& applyTo( Node< int >& node ) const override;
+	virtual BaseNode& applyTo( BaseNode& node ) const override;
 	virtual LexemeType getType() const override;
 	virtual void changeExpectedMatches( int& count ) const override;
 	virtual Lexeme::SharedPointer parseNext( const std::string& document ) const override;

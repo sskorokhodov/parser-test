@@ -31,7 +31,7 @@ public :
 	virtual ~Lexeme() = default;
 
 	virtual SharedPointer parseNext( const std::string& document ) const = 0;
-	virtual Node< int >& applyTo( Node< int >& node ) const = 0;
+	virtual BaseNode& applyTo( BaseNode& node ) const = 0;
 	virtual LexemeType getType() const = 0;
 	virtual void changeExpectedMatches( int& count ) const = 0;
 

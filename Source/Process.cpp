@@ -7,6 +7,8 @@
 #include <rstyle/parser/Parser.h>
 #include <rstyle/parser/StructureWriter.h>
 
+#include <rstyle/nodetree/NodesTree.hpp>
+
 #include <iostream>
 
 
@@ -52,14 +54,15 @@ process( const std::string& inputFileName, const std::string& outputFileName )
 	auto document = simple::readFile( inputFileName );
 
 	rstyle::Parser parser;
-	auto root = parser.parse( document );
+	rstyle::NodesTree< int > root;
+	parser.parse( document, root );
 
 	IndexingVisitor indexator;
-	root->visit( indexator );
+	root.visit( indexator );
 
-	::printIds( *root );
+	::printIds( root );
 
 	rstyle::StructureWriter writer;
-	auto out = writer.write( *root );
+	auto out = writer.write( root );
 	simple::writeFile( out, outputFileName );
 }

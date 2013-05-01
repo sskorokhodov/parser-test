@@ -21,7 +21,7 @@ public :
 	Parser& operator =( const Parser& ) = default;
 	virtual ~Parser() = default;
 
-	virtual Node< int >::SharedPointer parse( const std::string& document ) const;
+	virtual void parse( const std::string& document, BaseNode& node ) const;
 };
 
 
