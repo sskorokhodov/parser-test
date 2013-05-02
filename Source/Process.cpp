@@ -6,7 +6,7 @@
 
 #include <rstyle/parser/Parser.h>
 
-#include <rstyle/nodetree/NodesTree.hpp>
+#include <rstyle/nodestree/NodesTree.hpp>
 #include "StructureWriter.h"
 
 #include <iostream>

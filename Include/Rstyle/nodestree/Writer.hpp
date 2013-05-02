@@ -1,11 +1,11 @@
 // Writer.h
 
-#ifndef RSTYLE_PARSER_WRITER_H
-#define RSTYLE_PARSER_WRITER_H
+#ifndef RSTYLE_NODESTREE_WRITER_H
+#define RSTYLE_NODESTREE_WRITER_H
 
 #include <string>
 
-#include <rstyle/nodetree/Node.hpp>
+#include <rstyle/nodestree/Node.hpp>
 
 
 
@@ -25,4 +25,4 @@ public :
 
 } // rstyle
 
-#endif // RSTYLE_PARSER_WRITER_H
+#endif // RSTYLE_NODESTREE_WRITER_H

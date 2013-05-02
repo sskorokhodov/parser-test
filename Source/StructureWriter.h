@@ -3,7 +3,7 @@
 #ifndef RSTYLE_PARSER_STRUCTURE_WRITER_H
 #define RSTYLE_PARSER_STRUCTURE_WRITER_H
 
-#include <rstyle/nodetree/Writer.hpp>
+#include <rstyle/nodestree/Writer.hpp>
 
 
 

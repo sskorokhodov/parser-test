@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <functional>
 
-#include <rstyle/nodetree/BaseNode.hpp>
+#include <rstyle/nodestree/BaseNode.hpp>
 
 
 

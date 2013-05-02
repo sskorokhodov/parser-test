@@ -3,8 +3,8 @@
 #ifndef RSTYLE_NODESTREE_NODES_TREE_HPP
 #define RSTYLE_NODESTREE_NODES_TREE_HPP
 
-#include <rstyle/nodetree/Node.hpp>
-#include <rstyle/nodetree/UniversalNode.hpp>
+#include <rstyle/nodestree/Node.hpp>
+#include <rstyle/nodestree/UniversalNode.hpp>
 
 #include <stdexcept>
 

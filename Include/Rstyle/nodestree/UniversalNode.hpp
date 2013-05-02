@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include <rstyle/nodetree/Node.hpp>
+#include <rstyle/nodestree/Node.hpp>
 
 
 

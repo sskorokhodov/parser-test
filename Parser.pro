@@ -29,10 +29,11 @@ SOURCES += \
 HEADERS += \
 		source/Process.h \
 		source/StructureWriter.h \
-		include/rstyle/nodetree/BaseNode.hpp \
-		include/rstyle/nodetree/Node.hpp \
-		include/rstyle/nodetree/NodesTree.hpp \
-		include/rstyle/nodetree/UniversalNode.hpp \
+		include/rstyle/nodestree/BaseNode.hpp \
+		include/rstyle/nodestree/Node.hpp \
+		include/rstyle/nodestree/NodesTree.hpp \
+		include/rstyle/nodestree/UniversalNode.hpp \
+		include/rstyle/nodestree/Writer.hpp \
 		include/rstyle/parser/ValueLexeme.h \
 		include/rstyle/parser/Utils.h \
 		include/rstyle/parser/Parser.h \
@@ -47,5 +48,4 @@ HEADERS += \
 		include/simple/FileReadWrite.h \
 		include/simple/ConvertToString.hpp \
 		include/simple/ConvertEndoding.h \
-		include/simple/CommandLineOptions.h \
-		include/rstyle/nodetree/Writer.hpp
+		include/simple/CommandLineOptions.h
