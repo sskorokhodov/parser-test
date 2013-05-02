@@ -60,28 +60,28 @@ public :
 
 
 
-	virtual std::string getName() const
+	virtual std::string getName() const override
 	{
 		return name_;
 	}
 
 
 
-	virtual bool isComposite() const
+	virtual bool isComposite() const override
 	{
 		return !subnodes_.empty();
 	}
 
 
 
-	virtual std::string getValue() const
+	virtual std::string getValue() const override
 	{
 		return value_;
 	}
 
 
 
-	virtual void setValue( const std::string& value )
+	virtual void setValue( const std::string& value ) override
 	{
 		if ( !subnodes_.empty() )
 		{
@@ -92,7 +92,7 @@ public :
 
 
 
-	virtual Node< T >& addNode( const std::string& name )
+	virtual Node< T >& addNode( const std::string& name ) override
 	{
 		value_.clear();
 		auto subnode = std::make_shared< UniversalNode >( name, this );
@@ -102,14 +102,14 @@ public :
 
 
 
-	virtual Node< T >& getParent() const
+	virtual Node< T >& getParent() const override
 	{
 		return *parent_;
 	}
 
 
 
-	virtual void visit( typename Node< T >::Visitor& visitor )
+	virtual void visit( typename Node< T >::Visitor& visitor ) override
 	{
 		visitor.accept( *this );
 		for ( auto& node : subnodes_ )
@@ -120,7 +120,7 @@ public :
 
 
 
-	virtual void visit( typename Node< T >::ConstVisitor& visitor ) const
+	virtual void visit( typename Node< T >::ConstVisitor& visitor ) const override
 	{
 		visitor.accept( *this );
 		for ( const auto& node : subnodes_ )
@@ -131,7 +131,7 @@ public :
 
 
 
-	virtual void visit1( const typename Node< T >::VisitorFunction& function )
+	virtual void visit1( const typename Node< T >::VisitorFunction& function ) override
 	{
 		function( *this );
 		for ( auto& node : subnodes_ )
@@ -142,7 +142,7 @@ public :
 
 
 
-	virtual void visit2( const typename Node< T >::ConstVisitorFunction& function ) const
+	virtual void visit2( const typename Node< T >::ConstVisitorFunction& function ) const override
 	{
 		function( *this );
 		for ( const auto& node : subnodes_ )
