@@ -13,7 +13,7 @@
 
 namespace
 {
-	enum class ExecutionResultCode
+	enum class ExecutionResultCode : int
 	{
 		SUCCESS = 0,
 		UNRECOGNIZED,
