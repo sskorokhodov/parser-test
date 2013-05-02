@@ -131,6 +131,28 @@ public :
 
 
 
+	virtual void visit1( const typename Node< T >::VisitorFunction& function )
+	{
+		function( *this );
+		for ( auto& node : subnodes_ )
+		{
+			node->visit1( function );
+		}
+	}
+
+
+
+	virtual void visit2( const typename Node< T >::ConstVisitorFunction& function ) const
+	{
+		function( *this );
+		for ( const auto& node : subnodes_ )
+		{
+			node->visit2( function );
+		}
+	}
+
+
+
 	virtual typename Node< T >::Iterator begin() const override
 	{
 		return typename Node< T >::Iterator{ std::make_shared< IteratorImpl >( subnodes_.begin(), &subnodes_ ) };

@@ -17,9 +17,6 @@ namespace rstyle
 template< class T >
 class NodesTree : public Node< T >
 {
-private :
-	class CountNodesVisitor;
-
 protected :
 	class IteratorImpl;
 
@@ -114,6 +111,20 @@ public :
 
 
 
+	virtual void visit1( const typename Node< T >::VisitorFunction& function ) override
+	{
+		firstNode_->visit1( function );
+	}
+
+
+
+	virtual void visit2( const typename Node< T >::ConstVisitorFunction& function ) const override
+	{
+		firstNode_->visit1( function );
+	}
+
+
+
 	virtual typename Node< T >::Iterator begin() const override
 	{
 		return typename Node< T >::Iterator( std::make_shared< IteratorImpl >( firstNode_ ) );
@@ -130,41 +141,14 @@ public :
 
 	size_t countSubnodes() const
 	{
-		CountNodesVisitor counter;
-		firstNode_->visit( counter );
-		return counter.getCount();
+		size_t count = 0;
+		firstNode_->visit2( [&count]( const Node< T >& ){ ++count; } );
+		return count;
 	}
 
 private :
 	typename Node< T >::SharedPointer firstNode_;
 	typename Node< T >::DataType data_;
-};
-
-
-
-
-
-template< class T >
-class NodesTree< T >::CountNodesVisitor : public Node< T >::Visitor
-{
-public :
-	CountNodesVisitor()
-		: count_{ 0 }
-	{
-	}
-
-	virtual void accept( Node< T >& ) override
-	{
-		++count_;
-	}
-
-	size_t getCount() const
-	{
-		return count_;
-	}
-
-private :
-	size_t count_;
 };
 
 

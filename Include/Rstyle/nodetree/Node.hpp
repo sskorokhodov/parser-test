@@ -6,6 +6,7 @@
 #include <string>
 #include <memory>
 #include <stdexcept>
+#include <functional>
 
 #include <rstyle/nodetree/BaseNode.hpp>
 
@@ -27,6 +28,12 @@ public :
 	class IteratorImpl;
 	class Iterator;
 
+//	typedef void (*VisitorFunction)( Node& );
+//	typedef void (*ConstVisitorFunction)( const Node& );
+
+	typedef std::function< void ( Node& ) > VisitorFunction;
+	typedef std::function< void ( const Node& ) > ConstVisitorFunction;
+
 public :
 	virtual ~Node() noexcept = default;
 
@@ -37,6 +44,9 @@ public :
 
 	virtual void visit( Visitor& visitor ) = 0;
 	virtual void visit( ConstVisitor& visitor ) const = 0;
+
+	virtual void visit1( const VisitorFunction& function ) = 0;
+	virtual void visit2( const ConstVisitorFunction& function ) const = 0;
 
 	virtual Iterator begin() const = 0;
 	virtual Iterator end() const = 0;

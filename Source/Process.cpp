@@ -15,36 +15,15 @@
 
 namespace
 {
-	class IndexingVisitor : public rstyle::Node< int >::Visitor
+	void printIds( const rstyle::Node< int >& node )
 	{
-	public :
-		IndexingVisitor()
-			: id_{ START_ID }
+		for ( const auto& subnode : node )
 		{
+			std::cout << subnode.getData() << std::endl;
+			printIds( subnode );
 		}
-
-		void accept( rstyle::Node< int >& node ) override
-		{
-			node.setData( id_ );
-			++id_;
-		}
-
-	private :
-		static const size_t START_ID = 1;
-		size_t id_;
-	};
-} //
-
-
-
-void printIds( const rstyle::Node< int >& node )
-{
-	for ( const auto& subnode : node )
-	{
-		std::cout << subnode.getData() << std::endl;
-		printIds( subnode );
 	}
-}
+} //
 
 
 
@@ -57,9 +36,10 @@ process( const std::string& inputFileName, const std::string& outputFileName )
 	rstyle::NodesTree< int > root;
 	parser.parse( document, root );
 
-	IndexingVisitor indexator;
-	root.visit( indexator );
+	int id = 1;
+	root.visit1( [&id]( rstyle::Node< int >& node ){ node.setData( id ); ++id; } );
 
+	std::cout << root.countSubnodes() << " nodes:" << std::endl;
 	::printIds( root );
 
 	rstyle::StructureWriter writer;
