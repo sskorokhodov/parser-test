@@ -11,7 +11,7 @@ INCLUDEPATH += Include
 SOURCES += \
 		source/Process.cpp \
 		source/Main.cpp \
-		include/rstyle/nodetree/StructureWriter.cpp \
+		source/StructureWriter.cpp \
 		include/rstyle/parser/ValueLexeme.cpp \
 		include/rstyle/parser/Utils.cpp \
 		include/rstyle/parser/Parser.cpp \
@@ -28,11 +28,11 @@ SOURCES += \
 
 HEADERS += \
 		source/Process.h \
+		source/StructureWriter.h \
 		include/rstyle/nodetree/BaseNode.hpp \
 		include/rstyle/nodetree/Node.hpp \
 		include/rstyle/nodetree/NodesTree.hpp \
 		include/rstyle/nodetree/UniversalNode.hpp \
-		include/rstyle/nodetree/StructureWriter.h \
 		include/rstyle/parser/ValueLexeme.h \
 		include/rstyle/parser/Utils.h \
 		include/rstyle/parser/Parser.h \
@@ -48,4 +48,4 @@ HEADERS += \
 		include/simple/ConvertToString.hpp \
 		include/simple/ConvertEndoding.h \
 		include/simple/CommandLineOptions.h \
-    include/rstyle/nodetree/Writer.hpp
+		include/rstyle/nodetree/Writer.hpp

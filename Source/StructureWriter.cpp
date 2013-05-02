@@ -1,6 +1,6 @@
 // StructureWriter.cpp
 
-#include <rstyle/nodetree/StructureWriter.h>
+#include "StructureWriter.h"
 
 #include <Simple/ConvertToString.hpp>
 
