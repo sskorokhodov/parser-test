@@ -26,7 +26,7 @@ public :
 	UniversalNode( const std::string& name, Node< T >* parent )
 		: name_{ name }
 		, parent_{ parent }
-		, id_{ 0 }
+		, data_{}
 	{
 	}
 
@@ -46,16 +46,16 @@ public :
 
 
 
-	virtual typename Node< T >::DataType& getData() override
+	virtual void setData( const typename Node< T >::DataType& data ) override
 	{
-		return id_;
+		data_ = data;
 	}
 
 
 
 	virtual const typename Node< T >::DataType& getData() const override
 	{
-		return id_;
+		return data_;
 	}
 
 
@@ -150,7 +150,7 @@ private :
 	Node< T >* const parent_;
 	std::string value_;
 	NodesVector subnodes_;
-	typename Node< T >::DataType id_;
+	typename Node< T >::DataType data_;
 };
 
 

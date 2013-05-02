@@ -30,7 +30,7 @@ public :
 public :
 	virtual ~Node() noexcept = default;
 
-	virtual DataType& getData() = 0;
+	virtual void setData( const DataType& data ) = 0;
 	virtual const DataType& getData() const = 0;
 
 	virtual Node& getParent() const override = 0 ;

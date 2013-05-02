@@ -25,7 +25,7 @@ namespace
 
 		void accept( rstyle::Node< int >& node ) override
 		{
-			node.getData() = id_;
+			node.setData( id_ );
 			++id_;
 		}
 
