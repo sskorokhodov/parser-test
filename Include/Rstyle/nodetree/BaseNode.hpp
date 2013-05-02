@@ -1,3 +1,5 @@
+// BaseNode.hpp
+
 #ifndef RSTYLE_NODESTREE_BASE_NODE_HPP
 #define RSTYLE_NODESTREE_BASE_NODE_HPP
 

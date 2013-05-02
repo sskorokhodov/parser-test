@@ -32,7 +32,6 @@ HEADERS += \
 		include/rstyle/nodetree/Node.hpp \
 		include/rstyle/nodetree/NodesTree.hpp \
 		include/rstyle/nodetree/UniversalNode.hpp \
-		include/rstyle/nodetree/Writer.h \
 		include/rstyle/nodetree/StructureWriter.h \
 		include/rstyle/parser/ValueLexeme.h \
 		include/rstyle/parser/Utils.h \
@@ -48,4 +47,5 @@ HEADERS += \
 		include/simple/FileReadWrite.h \
 		include/simple/ConvertToString.hpp \
 		include/simple/ConvertEndoding.h \
-		include/simple/CommandLineOptions.h
+		include/simple/CommandLineOptions.h \
+    include/rstyle/nodetree/Writer.hpp

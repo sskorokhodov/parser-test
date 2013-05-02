@@ -42,7 +42,7 @@ namespace
 /**
  * @brief Produces structure of nodes tree.
  * @param node - the root of nodes tree to process.
- * @return Returns string that contains structured view of nones tree.
+ * @return Returns string that contains structured view of nodes tree.
  */
 std::string
 StructureWriter::write( const Node< int >& node ) const

@@ -13,12 +13,13 @@ namespace rstyle
 {
 
 
+template< class T >
 class Writer
 {
 public :
 	virtual ~Writer() = default;
 
-	virtual std::string write( const Node< int >& root ) const = 0;
+	virtual std::string write( const Node< T >& root ) const = 0;
 };
 
 

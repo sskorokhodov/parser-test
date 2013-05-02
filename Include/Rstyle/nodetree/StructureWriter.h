@@ -3,7 +3,7 @@
 #ifndef RSTYLE_PARSER_STRUCTURE_WRITER_H
 #define RSTYLE_PARSER_STRUCTURE_WRITER_H
 
-#include <rstyle/nodetree/Writer.h>
+#include <rstyle/nodetree/Writer.hpp>
 
 
 
@@ -30,7 +30,7 @@ namespace rstyle
  * - third value is parent node index (0,1,1),\n
  * - fourth value is node value (tetrahedron).
  */
-class StructureWriter : public Writer
+class StructureWriter : public Writer< int >
 {
 public :
 	StructureWriter() = default;
