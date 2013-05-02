@@ -5,9 +5,9 @@
 #include <Simple/FileReadWrite.h>
 
 #include <rstyle/parser/Parser.h>
-#include <rstyle/parser/StructureWriter.h>
 
 #include <rstyle/nodetree/NodesTree.hpp>
+#include <rstyle/nodetree/StructureWriter.h>
 
 #include <iostream>
 

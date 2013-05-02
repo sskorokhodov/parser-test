@@ -11,9 +11,9 @@ INCLUDEPATH += Include
 SOURCES += \
 		source/Process.cpp \
 		source/Main.cpp \
+		include/rstyle/nodetree/StructureWriter.cpp \
 		include/rstyle/parser/ValueLexeme.cpp \
 		include/rstyle/parser/Utils.cpp \
-		include/rstyle/parser/StructureWriter.cpp \
 		include/rstyle/parser/Parser.cpp \
 		include/rstyle/parser/NameLexeme.cpp \
 		include/rstyle/parser/ListEndLexeme.cpp \
@@ -28,10 +28,14 @@ SOURCES += \
 
 HEADERS += \
 		source/Process.h \
-		include/rstyle/parser/Writer.h \
+		include/rstyle/nodetree/BaseNode.hpp \
+		include/rstyle/nodetree/Node.hpp \
+		include/rstyle/nodetree/NodesTree.hpp \
+		include/rstyle/nodetree/UniversalNode.hpp \
+		include/rstyle/nodetree/Writer.h \
+		include/rstyle/nodetree/StructureWriter.h \
 		include/rstyle/parser/ValueLexeme.h \
 		include/rstyle/parser/Utils.h \
-		include/rstyle/parser/StructureWriter.h \
 		include/rstyle/parser/Parser.h \
 		include/rstyle/parser/NameLexeme.h \
 		include/rstyle/parser/ListEndLexeme.h \
@@ -44,8 +48,4 @@ HEADERS += \
 		include/simple/FileReadWrite.h \
 		include/simple/ConvertToString.hpp \
 		include/simple/ConvertEndoding.h \
-		include/simple/CommandLineOptions.h \
-		include/rstyle/nodetree/UniversalNode.hpp \
-		include/rstyle/nodetree/NodesTree.hpp \
-		include/rstyle/nodetree/Node.hpp \
-    include/rstyle/nodetree/BaseNode.hpp
+		include/simple/CommandLineOptions.h
