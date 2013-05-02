@@ -28,9 +28,6 @@ public :
 	class IteratorImpl;
 	class Iterator;
 
-//	typedef void (*VisitorFunction)( Node& );
-//	typedef void (*ConstVisitorFunction)( const Node& );
-
 	typedef std::function< void ( Node& ) > VisitorFunction;
 	typedef std::function< void ( const Node& ) > ConstVisitorFunction;
 
