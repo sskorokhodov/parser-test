@@ -1,7 +1,7 @@
 // NodesTree.hpp
 
-#ifndef RSTYLE_PARSER_NODES_TREE_HPP
-#define RSTYLE_PARSER_NODES_TREE_HPP
+#ifndef RSTYLE_NODESTREE_NODES_TREE_HPP
+#define RSTYLE_NODESTREE_NODES_TREE_HPP
 
 #include <rstyle/nodetree/Node.hpp>
 #include <rstyle/nodetree/UniversalNode.hpp>
@@ -203,4 +203,4 @@ private :
 
 } // rstyle
 
-#endif // RSTYLE_PARSER_NODES_TREE_HPP
+#endif // RSTYLE_NODESTREE_NODES_TREE_HPP

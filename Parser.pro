@@ -47,4 +47,5 @@ HEADERS += \
 		include/simple/CommandLineOptions.h \
 		include/rstyle/nodetree/UniversalNode.hpp \
 		include/rstyle/nodetree/NodesTree.hpp \
-		include/rstyle/nodetree/Node.hpp
+		include/rstyle/nodetree/Node.hpp \
+    include/rstyle/nodetree/BaseNode.hpp

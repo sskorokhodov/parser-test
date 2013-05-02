@@ -3,7 +3,7 @@
 #ifndef RSTYLE_PARSER_LEXEME_H
 #define RSTYLE_PARSER_LEXEME_H
 
-#include <rstyle/nodetree/Node.hpp>
+#include <rstyle/nodetree/BaseNode.hpp>
 #include <memory>
 
 
