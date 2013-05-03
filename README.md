@@ -1,3 +1,20 @@
+Introduction
+------------
+
+The project is elaboration of test that I wrote to get a new job.
+It parse simple tree data structure format file, build tree data structure and writes structure info into new file.
+Now it used to learn and try new C++11 features, doxygen comments and boost or google (I didn't decide yet) unit-test library.
+
+Overview
+--------
+
+Hear should be functionality description.
+
+Examples
+--------
+
+Hear should be simple usage examples.
+
 C++ 11 features used in project
 -------------------------------
 
@@ -23,5 +40,6 @@ ability to iterate over equally named nodes with "next()"?)
 - add Writer to save nodes structure in source format
 - doxygen comments
 - unit-tests
+- CMake build system
 - to use more C++ 11 features
 - to make as many work as possible at compilation time
