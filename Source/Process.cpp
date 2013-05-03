@@ -37,7 +37,7 @@ process( const std::string& inputFileName, const std::string& outputFileName )
 	parser.parse( document, root );
 
 	int id = 1;
-	root.visit1( [&id]( rstyle::Node< int >& node ){ node.setData( id ); ++id; } );
+	root.visitWithFunction( [&id]( rstyle::Node< int >& node ){ node.setData( id ); ++id; } );
 
 	std::cout << root.countSubnodes() << " nodes:" << std::endl;
 	::printIds( root );

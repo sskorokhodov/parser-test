@@ -131,23 +131,23 @@ public :
 
 
 
-	virtual void visit1( const typename Node< T >::VisitorFunction& function ) override
+	virtual void visitWithFunction( const typename Node< T >::VisitorFunction& function ) override
 	{
 		function( *this );
 		for ( auto& node : subnodes_ )
 		{
-			node->visit1( function );
+			node->visitWithFunction( function );
 		}
 	}
 
 
 
-	virtual void visit2( const typename Node< T >::ConstVisitorFunction& function ) const override
+	virtual void visitWithFunctionConst( const typename Node< T >::ConstVisitorFunction& function ) const override
 	{
 		function( *this );
 		for ( const auto& node : subnodes_ )
 		{
-			node->visit2( function );
+			node->visitWithFunctionConst( function );
 		}
 	}
 

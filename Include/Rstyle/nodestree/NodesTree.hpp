@@ -18,9 +18,13 @@ template< class T >
 class NodesTree : public Node< T >
 {
 protected :
+
 	class IteratorImpl;
 
+
+
 public :
+
 	NodesTree()
 		: firstNode_{ 0 }
 		, data_{}
@@ -30,13 +34,7 @@ public :
 
 
 	NodesTree( const NodesTree& ) = delete;
-
-
-
 	NodesTree& operator =( const NodesTree& ) = delete;
-
-
-
 	virtual ~NodesTree() noexcept = default;
 
 
@@ -111,30 +109,30 @@ public :
 
 
 
-	virtual void visit1( const typename Node< T >::VisitorFunction& function ) override
+	virtual void visitWithFunction( const typename Node< T >::VisitorFunction& function ) override
 	{
-		firstNode_->visit1( function );
+		firstNode_->visitWithFunction( function );
 	}
 
 
 
-	virtual void visit2( const typename Node< T >::ConstVisitorFunction& function ) const override
+	virtual void visitWithFunctionConst( const typename Node< T >::ConstVisitorFunction& function ) const override
 	{
-		firstNode_->visit1( function );
+		firstNode_->visitWithFunctionConst( function );
 	}
 
 
 
 	virtual typename Node< T >::Iterator begin() const override
 	{
-		return typename Node< T >::Iterator( std::make_shared< IteratorImpl >( firstNode_ ) );
+		return typename Node< T >::Iterator{ std::make_shared< IteratorImpl >( firstNode_ ) };
 	}
 
 
 
 	virtual typename Node< T >::Iterator end() const override
 	{
-		return typename Node< T >::Iterator( std::make_shared< IteratorImpl >( Node< T >::null ) );
+		return typename Node< T >::Iterator{ std::make_shared< IteratorImpl >( Node< T >::null ) };
 	}
 
 
@@ -142,11 +140,14 @@ public :
 	size_t countSubnodes() const
 	{
 		size_t count = 0;
-		firstNode_->visit2( [&count]( const Node< T >& ){ ++count; } );
+		firstNode_->visitWithFunctionConst( [&count]( const Node< T >& ){ ++count; } );
 		return count;
 	}
 
+
+
 private :
+
 	typename Node< T >::SharedPointer firstNode_;
 	typename Node< T >::DataType data_;
 };

@@ -42,8 +42,8 @@ public :
 	virtual void visit( Visitor& visitor ) = 0;
 	virtual void visit( ConstVisitor& visitor ) const = 0;
 
-	virtual void visit1( const VisitorFunction& function ) = 0;
-	virtual void visit2( const ConstVisitorFunction& function ) const = 0;
+	virtual void visitWithFunction( const VisitorFunction& function ) = 0;
+	virtual void visitWithFunctionConst( const ConstVisitorFunction& function ) const = 0;
 
 	virtual Iterator begin() const = 0;
 	virtual Iterator end() const = 0;
