@@ -26,7 +26,7 @@ protected :
 public :
 
 	NodesTree()
-		: firstNode_{ 0 }
+		: firstNode_{}
 		, data_{}
 	{
 	}
