@@ -57,29 +57,29 @@ Hear should be simple usage examples.
 C++ 11 features used in project
 -------------------------------
 
-- `override` keyword
+- range-based for-loop
+- lambda functions and expressions
+- "move" constructor initialized with rvalue reference
+- new string literals (`u8"Some UTF-8 text: العربية, Česky, 日本語"`)
+- strongly typed enumerations
 - explicit default methods deleting with `delete` keyword
 - explicit `default` methods keyword
+- `override` keyword
+- class inheritence preventing with `final` keyword
 - uniform initialization syntax with braces
 - `noexcept` specification
-- "move" constructor initialized with rvalue reference
 - `auto` keyword type inference
-- class inheritence preventing with `final` keyword
 - `std::shared_ptr`
-- range-based for-loop
-- strongly typed enumerations
-- new string literals (`u8"Some UTF-8 text: العربية, Česky, 日本語"`)
-- lambda functions and expressions
 
 Plans
 -----
 
-- add ability to get node by its name (std::map? Should it be multimap with
-ability to iterate over equally named nodes with "next()"?)
-- add Writer to save nodes structure in source format
 - doxygen comments
 - unit-tests
 - CMake build system
+- add ability to get node by its name (std::map? Should it be multimap with
+ability to iterate over equally named nodes with "next()"?)
+- add Writer to save nodes structure in source format
 - to use more C++ 11 features
 - to make as many work as possible at compilation time
 
