@@ -1,6 +1,6 @@
 // FileReadWrite.cpp
 
-#include <Simple/FileReadWrite.h>
+#include <simple/FileReadWrite.h>
 
 #include <fstream>
 #include <vector>

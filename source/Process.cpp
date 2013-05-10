@@ -2,7 +2,7 @@
 
 #include "Process.h"
 
-#include <Simple/FileReadWrite.h>
+#include <simple/FileReadWrite.h>
 
 #include <rstyle/parser/Parser.h>
 

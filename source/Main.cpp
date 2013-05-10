@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-#include <Simple/ConvertEndoding.h>
-#include <Simple/CommandLineOptions.h>
+#include <simple/ConvertEndoding.h>
+#include <simple/CommandLineOptions.h>
 
 #include <rstyle/parser/Exceptions.h>
 

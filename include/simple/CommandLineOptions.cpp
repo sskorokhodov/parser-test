@@ -1,7 +1,7 @@
 // CommandLineOptions.cpp
 
 #include <assert.h>
-#include <Simple/CommandLineOptions.h>
+#include <simple/CommandLineOptions.h>
 
 
 

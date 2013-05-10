@@ -2,7 +2,7 @@
 
 #include "StructureWriter.h"
 
-#include <Simple/ConvertToString.hpp>
+#include <simple/ConvertToString.hpp>
 
 
 

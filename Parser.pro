@@ -6,7 +6,7 @@ QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra -pedantic
 
 
 
-INCLUDEPATH += Include
+INCLUDEPATH += include
 
 SOURCES += \
 		source/Process.cpp \

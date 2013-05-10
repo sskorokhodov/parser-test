@@ -1,6 +1,6 @@
 // ConvertEncoding.h
 
-#include <Simple/ConvertEndoding.h>
+#include <simple/ConvertEndoding.h>
 #include <vector>
 
 #include <Windows.h>
