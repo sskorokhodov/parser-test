@@ -19,16 +19,16 @@ namespace rstyle
  *
  * Produces structure of nodes tree in format:
  *
- * 1, shape, 0\n
- * 2, type, 1, tetrahedron\n
- * 3, vertices, 1\n
- * ...
+ *     1, shape, 0
+ *     2, type, 1, tetrahedron
+ *     3, vertices, 1
+ *     ...
  *
- * where:\n
- * - first value is node index (1,2,3),\n
- * - second value is node name (shape,type,vertices),\n
- * - third value is parent node index (0,1,1),\n
- * - fourth value is node value (tetrahedron).
+ * where comma separated values of one string are:
+ * - first value is node index (1,2,3),
+ * - second value is node name (shape,type,vertices),
+ * - third value is parent node index (0,1,1),
+ * - fourth value (*optional*) is node value (tetrahedron).
  */
 class StructureWriter : public Writer< int >
 {
