@@ -81,7 +81,11 @@ Plans
 ability to iterate over equally named nodes with "next()"?)
 - add Writer to save nodes structure in source format
 - to use more C++ 11 features
-- to make as many work as possible at compilation time
+
+### ToDo (just couldn't find better place for it)
+
+- add hyper/entity links to doxygen comments
+
 
 [GoogleTest]: https://code.google.com/p/googletest/ "Google C++ testing framework project home page"
 [BoostTest]: http://www.boost.org/doc/libs/1_35_0/libs/test/doc/index.html "Boost Test Library introduction page"
