@@ -38,6 +38,11 @@ public :
 	StructureWriter& operator =( const StructureWriter& ) = delete;
 	virtual ~StructureWriter() noexcept = default;
 
+	/**
+	 * @brief Produces structure of nodes tree.
+	 * @param node - the root of nodes tree to process.
+	 * @return Returns string that contains structured view of nodes tree.
+	 */
 	virtual std::string write( const Node< int >& node ) const override;
 };
 
