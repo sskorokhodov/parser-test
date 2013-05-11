@@ -14,7 +14,7 @@ namespace rstyle
 /**
  * @brief The BaseNode class is intend to supply *minimal non-template node interface*.
  *
- * Usually to work with that class it is the best choice when you need only to add nodes to tree or
+ * Usually to work with that class is the best choice when you need only to add nodes to tree or
  * just need for simple node attributes like name or string value.
  *
  * When you need to walk through nodes tree, or keep/process nodes data, you have to look for more
