@@ -36,6 +36,7 @@ public :
 	void parse( int argc, char* argv[] );
 	void addKey( const std::string& key );
 
+private :
 	bool isKey( const std::string& token ) const;
 	void checkIfKeyAllowed( const std::string& key ) const;
 	static bool isStartWith( const std::string& data, const std::string& start );
