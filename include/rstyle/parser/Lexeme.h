@@ -12,6 +12,9 @@ namespace rstyle
 {
 
 
+/**
+ * @brief Supported lexemes type identificators
+ */
 enum class LexemeType
 {
 	NAME,
@@ -22,6 +25,9 @@ enum class LexemeType
 
 
 
+/**
+ * @brief Base interface for all parser lexemes.
+ */
 class Lexeme
 {
 public :
@@ -47,7 +53,7 @@ public :
 	virtual BaseNode& applyTo( BaseNode& node ) const = 0;
 
 	/**
-	 * @return one of supported lexemes type identificator.
+	 * @return one of supported [lexemes type identificator](@ref LexemeType).
 	 */
 	virtual LexemeType getType() const = 0;
 
