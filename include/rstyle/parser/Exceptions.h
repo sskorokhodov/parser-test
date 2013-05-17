@@ -12,6 +12,9 @@ namespace rstyle
 {
 
 
+/**
+ * @brief Represents all errors found in parsed document.
+ */
 class ParseException : public std::logic_error
 {
 public :
@@ -25,6 +28,13 @@ public :
 
 
 
+/**
+ * @brief Represents lexical errors found in parsed document.
+ *
+ * Lexical error means incorrect/unsupported lexeme content.
+ *
+ * Example: new line in value lexeme.
+ */
 class LexicalException : public ParseException
 {
 public :
@@ -38,6 +48,13 @@ public :
 
 
 
+/**
+ * @brief Represents syntax errors found in parsed document.
+ *
+ * Syntax error in most cases means incorrect lexeme position or expected lexeme absence.
+ *
+ * Example: matching brace absence.
+ */
 class SyntaxException : public ParseException
 {
 public :
