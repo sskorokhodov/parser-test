@@ -6,46 +6,46 @@ QMAKE_CXXFLAGS += -std=c++11 -Wall -Wextra -pedantic
 
 
 
-INCLUDEPATH += include
+INCLUDEPATH += src
 
 SOURCES += \
-		source/Process.cpp \
-		source/Main.cpp \
-		source/StructureWriter.cpp \
-		include/rstyle/parser/ValueLexeme.cpp \
-		include/rstyle/parser/Utils.cpp \
-		include/rstyle/parser/Parser.cpp \
-		include/rstyle/parser/NameLexeme.cpp \
-		include/rstyle/parser/ListEndLexeme.cpp \
-		include/rstyle/parser/ListBeginLexeme.cpp \
-		include/rstyle/parser/LexemesPairsMatchChecker.cpp \
-		include/rstyle/parser/LexemesList.cpp \
-		include/rstyle/parser/AssignLexeme.cpp \
-		include/simple/FileReadWrite.cpp \
-		include/simple/ConvertEncoding.cpp \
-		include/simple/CommandLineOptions.cpp \
-		include/rstyle/parser/Lexeme.cpp
+		src/Main.cpp \
+		src/Process.cpp \
+		src/StructureWriter.cpp \
+		src/parser/Parser.cpp \
+		src/parser/LexemesList.cpp \
+		src/parser/lexemes/Lexeme.cpp \
+		src/parser/lexemes/ValueLexeme.cpp \
+		src/parser/lexemes/NameLexeme.cpp \
+		src/parser/lexemes/ListEndLexeme.cpp \
+		src/parser/lexemes/AssignLexeme.cpp \
+		src/parser/lexemes/ListBeginLexeme.cpp \
+		src/parser/utils/Utils.cpp \
+		src/parser/utils/LexemesPairsMatchChecker.cpp \
+		src/utils/FileReadWrite.cpp \
+		src/utils/ConvertEncoding.cpp \
+		src/utils/CommandLineOptions.cpp
 
 HEADERS += \
-		source/Process.h \
-		source/StructureWriter.h \
-		include/rstyle/nodestree/BaseNode.hpp \
-		include/rstyle/nodestree/Node.hpp \
-		include/rstyle/nodestree/NodesTree.hpp \
-		include/rstyle/nodestree/UniversalNode.hpp \
-		include/rstyle/nodestree/Writer.hpp \
-		include/rstyle/parser/ValueLexeme.h \
-		include/rstyle/parser/Utils.h \
-		include/rstyle/parser/Parser.h \
-		include/rstyle/parser/NameLexeme.h \
-		include/rstyle/parser/ListEndLexeme.h \
-		include/rstyle/parser/ListBeginLexeme.h \
-		include/rstyle/parser/LexemesPairsMatchChecker.h \
-		include/rstyle/parser/LexemesList.h \
-		include/rstyle/parser/Lexeme.h \
-		include/rstyle/parser/Exceptions.h \
-		include/rstyle/parser/AssignLexeme.h \
-		include/simple/FileReadWrite.h \
-		include/simple/ConvertToString.hpp \
-		include/simple/ConvertEndoding.h \
-		include/simple/CommandLineOptions.h
+		src/Process.h \
+		src/StructureWriter.h \
+		src/nodestree/BaseNode.hpp \
+		src/nodestree/Node.hpp \
+		src/nodestree/NodesTree.hpp \
+		src/nodestree/UniversalNode.hpp \
+		src/nodestree/Writer.hpp \
+		src/parser/Parser.h \
+		src/parser/Exceptions.h \
+		src/parser/LexemesList.h \
+		src/parser/lexemes/Lexeme.h \
+		src/parser/lexemes/AssignLexeme.h \
+		src/parser/lexemes/ListBeginLexeme.h \
+		src/parser/lexemes/ListEndLexeme.h \
+		src/parser/lexemes/NameLexeme.h \
+		src/parser/lexemes/ValueLexeme.h \
+		src/parser/utils/LexemesPairsMatchChecker.h \
+		src/parser/utils/Utils.h \
+		src/utils/FileReadWrite.h \
+		src/utils/ConvertToString.hpp \
+		src/utils/ConvertEndoding.h \
+		src/utils/CommandLineOptions.h
