@@ -5,54 +5,7 @@ Introduction
 ------------
 
 The project is elaboration of test that I wrote to get a new job.
-It parse simple tree data structure format file, build tree data structure and writes structure info into new file.
-
-Now it used to learn and try new C++11 features, doxygen comments and [boost][BoostTest] or [google][GoogleTest] (I didn't decide yet) unit-test library.
-
-Overview
---------
-
-Hear should be functionality description.
-
-### Principles
-
-Some principles.
-
-### Libraries
-
-1. The code to parse.
-
-    Some additional info.
-
-2. The code to work with nodes tree.
-
-    Some additional info.
-
-3. Other code.
-
-    Some description.
-
-#### Parser
-
-Hear should be parser code description.
-
-#### Nodes
-
-Hear should be nodes code description.
-
-#### Other
-
-Hear should be other code description.
-
-Examples
---------
-
-Hear should be simple usage examples.
-
-	void someCode()
-	{
-		// do something
-	}
+It parses simple tree data structure and produces new file with structure description.
 
 C++ 11 features used in project
 -------------------------------
@@ -65,8 +18,8 @@ C++ 11 features used in project
 - explicit default methods deleting with `delete` keyword
 - explicit `default` methods keyword
 - `override` keyword
-- class inheritence preventing with `final` keyword
-- uniform initialization syntax with braces
+- class inheritance preventing with `final` keyword
+- uniform initialisation syntax with braces
 - `noexcept` specification
 - `auto` keyword type inference
 - `std::shared_ptr`
