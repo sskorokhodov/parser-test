@@ -5,7 +5,7 @@ Introduction
 ------------
 
 The project is elaboration of test that I wrote to get a new job.
-It parses simple tree data structure and produces new file with structure description.
+It parses simple tree data structure and produces a new file with structure description.
 
 C++ 11 features used in project
 -------------------------------
