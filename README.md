@@ -4,8 +4,9 @@ Parser project
 Introduction
 ------------
 
-The project is elaboration of test that I wrote to get a new job.
-It parses simple tree data structure and produces a new file with description of the structure.
+The project is an elaboration of the test task.
+It parses a simple tree data structure and produces a file describing
+the structure of the tree.
 
 C++ 11 features used in project
 -------------------------------
@@ -31,7 +32,7 @@ Plans
 - unit-tests
 - CMake build system
 - add ability to get node by its name (std::map? Should it be multimap with
-ability to iterate over equally named nodes with "next()"?)
+  ability to iterate over equally named nodes with "next()"?)
 - add Writer to save nodes structure in source format
 - to use more C++ 11 features
 
